@@ -22,16 +22,18 @@ switch ($_POST["action"]) {
         mysqli_close($con);
 
         $contraseña_aparece = false;
+
         foreach ($data as $row) {
-            if ($hash == $row['contraseña'] && $usuario == $row['nombre']) {
+            if (password_verify($contraseña, $row['contraseña']) && $usuario == $row['nombre']) {
                 $contraseña_aparece = true;
-            } else {
+                break;
             }
         }
+
         if ($contraseña_aparece) {
             echo "1";
         } else {
-            echo "Algo ingresaste mal";
+            echo "Usuario o contraseña incorrectos";
         }
         break;
     case "registrarse":
