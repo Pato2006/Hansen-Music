@@ -12,7 +12,7 @@ function registrarse(){
         async: false,
         success: function (response) {
           if(response == "1"){
-            alert(response)
+            alert("Registro Exitoso")
             window.location.href = "perfil-modificar.html";  
           }
           else{

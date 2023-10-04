@@ -13,7 +13,7 @@ function login() {
     async: false,
     success: function (response) {
       if(response == "1"){
-        alert("Bien")
+        alert("Inicio exitoso")
       }
       else{
         alert("Iniciaste mal")

@@ -40,14 +40,9 @@ switch ($_POST["action"]) {
         $sql = "INSERT INTO usuarios (nombre, contraseña) VALUES ('$usuario', '$hash')";
         $result = mysqli_query($con, $sql);
         if ($result) {
-            $usuario_id = mysqli_insert_id($con);
-            $sql_informacion = "INSERT INTO usuarios_informacion (id) VALUES ('$usuario_id')";
-            $result_informacion = mysqli_query($con, $sql_informacion);
-            if ($result_informacion) {
-                echo "1";
-            } else {
-                echo "Algo fallo";
-            }
+            echo "1";
+        } else {
+            echo "Algo fallo";
         }
         break;
 }
