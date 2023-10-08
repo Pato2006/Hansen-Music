@@ -48,7 +48,7 @@
                 </svg>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="d-flex pe-2 text-center ms-4" role="search">
+                <form class="d-flex pe-2 text-center ms-4" role="search" action="producto.html">
                     <div class="row">
                         <div class="col-4 d-flex align-items-center flex-grow-1">
                             <input class="form-control form-control-lg me-2" type="search"
@@ -61,7 +61,18 @@
                 </form>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-pills d-flex flex-wrap text-center">
                     <li class="nav-item"><a href="subir-producto.html" class="nav-link active" aria-current="page">Vende tu producto</a></li>
-                    <li class="nav-item"><a href="login.html" class="nav-link ms-3"><img src="img-svg/person.svg"alt=""></a></li>
+                    <li class=""><a href="login.html" class="nav-link ms-3"></a></li>
+                    <div class="nav-item dropdown">
+                        <button id="menuDropdown" class="btn btn-secondary dropdown-toggle nav-item" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="img-svg/person.svg" alt="">
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="register.html">Registrarse</a></li>
+                            <li><a class="dropdown-item" href="login.html">Login</a></li>
+                            <li><a class="dropdown-item" href="perfil.html">Perfil</a></li>
+                        </ul>
+                    </div>
                     <li class="nav-item" id="buy"><a href="#" class="nav-link ms-3 "><img src="img-svg/car.svg"alt=""></a></li>
                 </ul>
             </div>

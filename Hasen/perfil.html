@@ -18,6 +18,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="css/cesese.css">
     <script src="js/script.js"></script>
+    <script src="js/perfil.js"></script>
     <title>Hansen Music</title>
 </head>
 
@@ -49,7 +50,7 @@
                 </svg>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="d-flex pe-2 text-center ms-4" role="search">
+                <form class="d-flex pe-2 text-center ms-4" role="search" action="producto.html">
                     <div class="row">
                         <div class="col-4 d-flex align-items-center flex-grow-1">
                             <input class="form-control form-control-lg me-2" type="search"
@@ -62,7 +63,18 @@
                 </form>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-pills d-flex flex-wrap text-center">
                     <li class="nav-item"><a href="subir-producto.html" class="nav-link active" aria-current="page">Vende tu producto</a></li>
-                    <li class="nav-item"><a href="login.html" class="nav-link ms-3"><img src="img-svg/person.svg"alt=""></a></li>
+                    <li class=""><a href="login.html" class="nav-link ms-3"></a></li>
+                    <div class="nav-item dropdown">
+                        <button id="menuDropdown" class="btn btn-secondary dropdown-toggle nav-item" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="img-svg/person.svg" alt="">
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="register.html">Registrarse</a></li>
+                            <li><a class="dropdown-item" href="login.html">Login</a></li>
+                            <li><a class="dropdown-item" href="perfil.html">Perfil</a></li>
+                        </ul>
+                    </div>
                     <li class="nav-item" id="buy"><a href="#" class="nav-link ms-3 "><img src="img-svg/car.svg"alt=""></a></li>
                 </ul>
             </div>
@@ -74,13 +86,13 @@
                 <img src="img-svg/person.svg" alt="">
             </div>
             <div class="perfil-informacion">
-                <label class="perfil">Mateo Gimenez</label>
-                <label class="descripcion">mateo@hasen.com</label>
-                <label class="descripcion">Hasen Gimenez</label>
-                <label class="descripcion">Reputacion: 7 / 10</label>
+                <label class="perfil" id="perfil"></label>
+                <label class="descripcion" id="correo"></label>
+                <label class="descripcion" id="compañia"></label>
+                <label class="descripcion" id="reputacion"></label>
             </div>
         </section>
-        <label class="envio_label">Envio y retiro en hogar</label>
+        <label class="envio_label" id="envio">Envio y retiro en hogar</label>
         <a href="perfil-modificar.html"><button type="button" class="btn btn-lg ms-5">Modificar informacion</button></a>
         <div class="perfil-envio">
             <label class="envio_label">Guitarra Roja (usada)</label>

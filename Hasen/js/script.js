@@ -32,7 +32,6 @@ $(document).ready(function () {
             var currentImage = carouselImages.eq(currentImageIndex);
             currentImage.attr('src', 'img-svg/plus-lg.svg');
             $('#inputGroupFile01').val('');
-
         }
     });
 
@@ -52,7 +51,6 @@ $(document).ready(function () {
         currentImage.attr('src', 'img-svg/person.svg');
         $('#formFileLg').val('');
     });
-
 })
 
 

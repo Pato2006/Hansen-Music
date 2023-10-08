@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-10-2023 a las 15:23:59
+-- Tiempo de generación: 08-10-2023 a las 02:24:10
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.0.25
 
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `usuarios` (
   `id` int(255) NOT NULL,
   `nombre` varchar(255) NOT NULL,
+  `nombre_usuario` varchar(255) DEFAULT NULL,
   `contraseña` varchar(255) NOT NULL,
   `correo` varchar(255) DEFAULT NULL,
   `nombre_compañia` varchar(255) DEFAULT NULL,
@@ -41,8 +42,8 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `contraseña`, `correo`, `nombre_compañia`, `reputacion`, `envio`) VALUES
-(2, 'pato', '$2y$10$2SYIEXDO.CCPo3vrqnuo8.9fJ1LMQFr3ksHOuHxQb.z2q0WQZSda2', NULL, NULL, NULL, NULL);
+INSERT INTO `usuarios` (`id`, `nombre`, `nombre_usuario`, `contraseña`, `correo`, `nombre_compañia`, `reputacion`, `envio`) VALUES
+(2, 'pato', 'Patri`', '$2y$10$2SYIEXDO.CCPo3vrqnuo8.9fJ1LMQFr3ksHOuHxQb.z2q0WQZSda2', 'asd322!2@ADW', 'asDAsd', NULL, 'Envío');
 
 --
 -- Índices para tablas volcadas
