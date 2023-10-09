@@ -2,9 +2,3 @@ Producto para comprar (donde ves el producto, las fotos eso) Santi = todo
 Comprar producto (donde pones tus datos tarjeta eso) Octa = corregir la fecha y cuadno es responsive y listo
 
 perfil.html para que solo entren los que esten logeado/registrados
-
-
-
-
-$_SESSION 
-https://www.php.net/manual/en/function.copy.php

@@ -1,9 +1,8 @@
 <?php
 include "env.php";
-session_start();
-$nombre = $_SESSION['nombre'];
+$nombre = $_COOKIE["Usuario"];
 $con = mysqli_connect(HOST, USER, PASSWORD, DB);
-$sql = "SELECT nombre_usuario,correo,reputacion,envio FROM usuarios WHERE nombre = '$nombre'";
+$sql = "SELECT * FROM usuarios WHERE nombre = '$nombre'";
 $result = mysqli_query($con,$sql);
 
 if($result){

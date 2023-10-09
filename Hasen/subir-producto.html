@@ -17,6 +17,7 @@
     <link rel="shortcut icon" href="img-svg/guitarra.svg" type="image/x-icon">
     <link rel="stylesheet" href="css/cesese.css">
     <script src="js/script.js"></script>
+    <script src="js/subirproduc.js"></script>
 </head>
 
 <body>
@@ -124,7 +125,7 @@
                         <div class="mb-3 align-items-center">
                             <section class="rounded">
                                 <input type="text" class="form-control form-control-lg"
-                                    placeholder="Titulo del producto">
+                                    placeholder="nombre del producto" id="nombre_producto">
                             </section>
                         </div>
                     </div>
@@ -132,14 +133,15 @@
                         <div class="input-group input-group-lg mb-3 align-items-center ">
                             <section class="rounded">
                                 <input type="text" class="form-control form-control-lg"
-                                    placeholder="Descripcion del producto">
+                                    placeholder="Descripcion del producto" id="descrip_producto">
                             </section>
                         </div>
                     </div>
                     <div class="subir-filtros mb-5 me-auto">
                         <div class="input-group">
-                            <button id="marcaDropdown" class="btn btn-outline-secondary dropdown-toggle" type="button"
+                            <button id="marcaDropdown" class="btn btn-outline-secondary dropdown-toggle" type="button"                            
                                 data-bs-toggle="dropdown" aria-expanded="false">Marca</button>
+                                
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#"
                                         onclick="seleccionarOpcion('marca', 'Epiphone')">Epiphone</a></li>
@@ -190,19 +192,19 @@
                         <div class="input-group input-group-lg mb-3 align-items-center ms-2">
                             <section class="rounded">
                                 <input type="text" class="form-control form-control-lg w-100"
-                                    placeholder="Ubicacion(opcional)">
+                                    placeholder="Ubicacion(opcional)" id="ubicacion">
                             </section>
                         </div>
                     </div>
                     <div class="subir-precio">
                         <div class="input-group input-group-lg mb-3 align-items-center">
                             <section class="rounded">
-                                <input type="text" class="form-control form-control-lg" placeholder="Precio">
+                                <input type="text" class="form-control form-control-lg" placeholder="Precio" id="precio">
                             </section>
                         </div>
                     </div>
                     <div class="subir-boton d-flex-normal justify-content-center align-items-center">
-                        <button class="btn w-100 h-100" type="button">Subir</button>
+                        <button class="btn w-100 h-100" type="submit" onclick= productosubir() >Subir</button>
                     </div>
                 </section>
             </div>
