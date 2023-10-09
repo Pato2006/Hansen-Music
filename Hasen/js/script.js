@@ -55,8 +55,8 @@ $(document).ready(function () {
 
 
 // Elegir Opcion Input 
-function seleccionarOpcion(elementId, opcion) {
-    const dropdown = document.getElementById(`${elementId}Dropdown`);
+function seleccionarOpcion(entrega, opcion) {
+    dropdown = document.getElementById(`${entrega}Dropdown`);
     dropdown.innerHTML = opcion;
 }
 

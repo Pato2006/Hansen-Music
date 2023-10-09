@@ -14,6 +14,7 @@ function login() {
     success: function (response) {
       if(response == "1"){
         alert("Inicio exitoso")
+        window.location.href = "index.html"
       }
       else{
         alert("Iniciaste mal")

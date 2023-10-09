@@ -26,7 +26,7 @@ function subir_datos() {
     data: datos,
     async: false,
     success: function (data) {
-      alert(data)
+      window.location.href = "index.html"
     },
     error: function (data) {
     },
