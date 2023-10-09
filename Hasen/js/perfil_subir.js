@@ -19,8 +19,7 @@ function subir_datos() {
     data: datos,
     async: false,
     success: function (data) {
-      alert(data.foto)
-      // window.location.href = "index.html"
+      window.location.href = "index.html"
     },
     error: function (data) {
       alert(data)
