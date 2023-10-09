@@ -90,16 +90,18 @@
                                     <h4 class="text-white-50 mb-5">Bienvenido a</h4>
                                     <img src="img-svg/HasenLogin.svg" alt="" class="mb-5">
                                     <p class="text-white-50 mb-5">Inicia Sesion</p>
+                                    <form action="" method="POST" id="form_login">
                                     <div class="form-outline form-white mb-4">
                                         <p class="form-label" for="typeEmailX">Usuario/Correo Electronico</p>
-                                        <input type="email" id="typeEmailX" class="form-control form-control-lg" style="width: 380px;"/>
+                                        <input type="email" id="typeEmailX" class="form-control form-control-lg" style="width: 380px;" name="usuario"/>
                                     </div>
                                     <div class="form-outline form-white mb-4">
                                         <p class="form-label" for="typePasswordX">Contraseña</p>
                                         <input type="password" id="typePasswordX"
-                                            class="form-control form-control-lg" style="width: 380px;"/>
+                                            class="form-control form-control-lg" style="width: 380px;" name="password"/>
                                     </div>
-                                    <button class="btn btn-outline btn-lg px-5 ms-2" type="submit" onclick="login()">Inicia sesion</button>
+                                    <button class="btn btn-outline btn-lg px-5 ms-2" type="submit" id="login">Inicia sesion</button>
+                                </form>
                                 </div>
                                 <div>
                                     <p class="mb-0">no tenes cuenta?

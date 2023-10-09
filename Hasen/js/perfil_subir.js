@@ -1,28 +1,21 @@
-function subir_datos() {
-  nombre = document.getElementById("nombre").value;
-  mail = document.getElementById("mail").value;
-  entrega = document.getElementById("entregaDropdown").textContent;
-  imagenPerfil  = document.getElementById("imagen_perfil");
-  foto = imagenPerfil.src;
-
-  if (nombre === "" || mail === "" || entrega === "") {
-    alert("Ingresa datos")
-    return
-  }
-  datos = {
-    nombre, mail, entrega, foto
-  };
-  $.ajax({
-    url: "PHP/perfil_subir.php",
-    type: "POST",
-    dataType: "text",
-    data: datos,
-    async: false,
-    success: function (data) {
-      window.location.href = "index.html"
-    },
-    error: function (data) {
-      alert(data)
-    },
-  });
-}
+$(document).ready(function () {
+  $("#actualizar").click(function () {
+    if (document.getElementById("nombre").value === "" || document.getElementById("mail").value === "" || document.getElementById("entregaDropdown").textContent === "") {
+      alert("Ingresa datos")
+      return
+    }
+    $.ajax({
+      url: "PHP/perfil_subir.php",
+      type: "POST",
+      dataType: "text",
+      data: $("#form_actualizar").serialize(),
+      async: false,
+      success: function (data) {
+        window.location.href = "index.html"
+      },
+      error: function (data) {
+        alert(data)
+      },
+    });
+  })
+})

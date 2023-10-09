@@ -1,16 +1,12 @@
-function registrarse(){
-    usuario = {
-        nombre : document.getElementById("typeEmailX").value,
-        contraseña : document.getElementById("typePasswordX").value,
-        action: "registrarse"
-      }
-      $.ajax({
-        url: "PHP/login_reg.php",
-        type: "POST",
-        dataType: "text",
-        data: usuario,
-        async: false,
-        success: function (response) {
+$(document).ready(function () {
+  $("#registrarse").click(function () {
+    $.ajax({
+      url: "PHP/register.php",
+      type: "POST",
+      dataType: "text",
+      data: $("#form_register").serialize(),
+      async: false,
+      success: function (response) {
           if(response == "1"){
             alert("Registro Exitoso")
             window.location.href = "perfil-modificar.html";  
@@ -18,10 +14,11 @@ function registrarse(){
           else{
             alert("algo ingresaste mal")
           }
-        },
-        error: function () {
-          alert("MAL");
-        },
-      });
-    
-}
+        
+      },
+      error: function () {
+        alert("MAL");
+      },
+    });
+  })
+})

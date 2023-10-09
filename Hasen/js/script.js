@@ -58,6 +58,7 @@ $(document).ready(function () {
 function seleccionarOpcion(entrega, opcion) {
     dropdown = document.getElementById(`${entrega}Dropdown`);
     dropdown.innerHTML = opcion;
+    $("#entregaInput").val(opcion);
 }
 
 

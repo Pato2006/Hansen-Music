@@ -61,7 +61,8 @@
                     </div>
                 </form>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-pills d-flex flex-wrap text-center">
-                    <li class="nav-item"><a href="subir-producto.html" class="nav-link active" aria-current="page">Vende tu producto</a></li>
+                    <li class="nav-item"><a href="subir-producto.html" class="nav-link active" aria-current="page">Vende
+                            tu producto</a></li>
                     <li class=""><a href="login.html" class="nav-link ms-3"></a></li>
                     <div class="nav-item dropdown">
                         <button id="menuDropdown" class="btn btn-secondary dropdown-toggle nav-item" type="button"
@@ -74,7 +75,8 @@
                             <li><a class="dropdown-item" href="perfil.html">Perfil</a></li>
                         </ul>
                     </div>
-                    <li class="nav-item" id="buy"><a href="#" class="nav-link ms-3 "><img src="img-svg/car.svg"alt=""></a></li>
+                    <li class="nav-item" id="buy"><a href="#" class="nav-link ms-3 "><img src="img-svg/car.svg"
+                                alt=""></a></li>
                 </ul>
             </div>
         </div>
@@ -87,19 +89,23 @@
                         <div class="card bg-dark text-white" style="border-radius: 1rem;">
                             <div class="card-body p-5 text-center">
                                 <div class="mb-md-5 mt-md-4 pb-5">
-                                    <h4 class="text-white-50 mb-5">Bienvenido a</h4>
-                                    <img src="img-svg/HasenLogin.svg" alt="" class="mb-5">
-                                    <p class="text-white-50 mb-5">Registrate</p>
-                                    <div class="form-outline form-white mb-4">
-                                        <p class="form-label" for="typeEmailX">Nombre de usuario</p>
-                                        <input type="email" id="typeEmailX" class="form-control form-control-lg" style="width: 380px;"/>
-                                    </div>
-                                    <div class="form-outline form-white mb-4">
-                                        <p class="form-label" for="typePasswordX">Contraseña</p>
-                                        <input type="password" id="typePasswordX"
-                                            class="form-control form-control-lg" style="width: 380px;"/>
-                                    </div>
-                                    <button class="btn btn-outline btn-lg px-5 ms-2" type="submit" onclick="registrarse()">Registrar</button>
+                                    <form action="" id="form_register" method="POST">
+                                        <h4 class="text-white-50 mb-5">Bienvenido a</h4>
+                                        <img src="img-svg/HasenLogin.svg" alt="" class="mb-5">
+                                        <p class="text-white-50 mb-5">Registrate</p>
+                                        <div class="form-outline form-white mb-4">
+                                            <p class="form-label" for="typeEmailX">Nombre de usuario</p>
+                                            <input type="email" id="typeEmailX" class="form-control form-control-lg"
+                                                style="width: 380px;" name="nombre"/>
+                                        </div>
+                                        <div class="form-outline form-white mb-4">
+                                            <p class="form-label" for="typePasswordX">Contraseña</p>
+                                            <input type="password" id="typePasswordX"
+                                                class="form-control form-control-lg" style="width: 380px;" name="password"/>
+                                        </div>
+                                        <button class="btn btn-outline btn-lg px-5 ms-2"
+                                            type="submit" id="registrarse">Registrar</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
