@@ -1,23 +1,16 @@
-var valorCookie = document.cookie.split('; ').find(row => row.startsWith('Usuario=')).split('=')[1];
-console.log("Valor de la cookie:" + valorCookie);
-// verificar la cookie anda
-
 function subir_datos() {
   nombre = document.getElementById("nombre").value;
   mail = document.getElementById("mail").value;
-  nombre_compañia = document.getElementById("nombre_compañia").value
-  if (nombre_compañia) { }
-  else {
-    nombre_compañia = null
-  }
   entrega = document.getElementById("entregaDropdown").textContent;
+  imagenPerfil  = document.getElementById("imagen_perfil");
+  foto = imagenPerfil.src;
 
   if (nombre === "" || mail === "" || entrega === "") {
     alert("Ingresa datos")
     return
   }
   datos = {
-    nombre, mail, nombre_compañia, entrega
+    nombre, mail, entrega, foto
   };
   $.ajax({
     url: "PHP/perfil_subir.php",
@@ -26,9 +19,11 @@ function subir_datos() {
     data: datos,
     async: false,
     success: function (data) {
-      window.location.href = "index.html"
+      alert(data.foto)
+      // window.location.href = "index.html"
     },
     error: function (data) {
+      alert(data)
     },
   });
 }

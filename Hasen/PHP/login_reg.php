@@ -4,12 +4,6 @@ include "env.php";
 $usuario = $_POST["nombre"];
 $contraseña = $_POST["contraseña"];
 $hash = password_hash($contraseña, PASSWORD_DEFAULT);
-
-$cookie_nombre = "Usuario";
-$duracion = 365;
-$expira = time() + ($duracion * 24 * 60 * 60);
-setcookie($cookie_nombre, $usuario, $expira, "/");
-
 $con = mysqli_connect(HOST, USER, PASSWORD, DB);
 switch ($_POST["action"]) {
     case "login":
@@ -31,6 +25,8 @@ switch ($_POST["action"]) {
         foreach ($data as $row) {
             if (password_verify($contraseña, $row['contraseña']) && $usuario == $row['nombre'] || $usuario == $row['correo']) {
                 $contraseña_aparece = true;
+                session_start();
+                $_SESSION['nombre'] = $row['nombre'];
                 break;
             }
         }
@@ -41,7 +37,7 @@ switch ($_POST["action"]) {
             echo "Usuario o contraseña incorrectos";
         }
         break;
-    case "registrarse":
+        case "registrarse":
         $sql = "INSERT INTO usuarios (nombre, contraseña) VALUES ('$usuario', '$hash')";
         $result = mysqli_query($con, $sql);
         if ($result) {
