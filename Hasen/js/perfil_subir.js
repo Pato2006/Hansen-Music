@@ -11,9 +11,7 @@ $(document).ready(function () {
       data: $("#form_actualizar").serialize(),
       async: false,
       success: function (data) {
-        alert(data)
-        alert($("#form_actualizar").serialize())
-        //window.location.href = "index.html"
+        window.location.href = "index.html"
       },
       error: function (data) {
         alert(data)
@@ -22,16 +20,14 @@ $(document).ready(function () {
   })
 })
 function FotoPerfil() {
-  var form = document.getElementById("form_actualizar");
-  var imagenInput = document.getElementById("formFileLg");
+  form = document.getElementById("form_actualizar");
+  imagenInput = document.getElementById("formFileLg");
   
   if (imagenInput && imagenInput.files.length > 0) {
-    var archivo = imagenInput.files[0];
+    archivo = imagenInput.files[0];
 
-    // Crea un objeto FormData para enviar todos los datos
-    var formData = new FormData(form);
+    formData = new FormData(form);
 
-    // Agrega los atributos del archivo al objeto FormData
     formData.append("nomb", archivo.name);
     formData.append("tipo", archivo.type);
     formData.append("tamaño", archivo.size);

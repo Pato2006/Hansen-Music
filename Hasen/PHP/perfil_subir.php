@@ -17,17 +17,6 @@ if (mysqli_num_rows($result) > 0) {
     $sql_insert = "UPDATE usuarios SET nombre_usuario = '$nombre_usuario', correo = '$mail', envio = '$entrega' WHERE nombre = '$nombre'";
     if (mysqli_query($con, $sql_insert)) {
         echo "Actualizacion Exitosa";
-/*         if(!(strpos($foto_tipo, 'png') || strpos($foto_tipo, 'jpg') && ($foto_tamaño < 100000))){
-            echo "La imagen es mayor a 100kb o no es .png o .jpg";
-        }
-        else{
-            if (move_uploaded_file($nombre_temporal, 'imagenes/')){
-                echo "El archivo ha sido cargado correctamente.";
-         }else{
-                echo "Ocurrió algún error al subir el fichero. No pudo guardarse.";
-         }  
-        }
-*/        
     }
     else {
         echo "Hubo un error al modificar los datos: " . mysqli_error($con);

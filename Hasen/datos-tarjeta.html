@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="css/bootstrap-grid.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/asd.css">
-    <link rel="stylesheet" href="css/resp.css">
     <link rel="shortcut icon" href="img-svg/guitarra.svg" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
@@ -28,7 +27,7 @@
                 <li class="item"><a href="#nosotros">Acerca de Nosotros</a></li>
                 <li class="item"><a href="#preg_frec">Preguntas Frecuentes</a></li>
             </ul>
-        </div>b
+        </div>
     </header>
     <nav class="navbar navbar-expand-lg">
         <div class="container">
@@ -66,7 +65,7 @@
                         <button id="menuDropdown" class="btn btn-secondary dropdown-toggle nav-item" type="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="img-svg/person.svg" alt="">
-                        </button>   
+                        </button>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="register.html">Registrarse</a></li>
                             <li><a class="dropdown-item" href="login.html">Login</a></li>
@@ -80,8 +79,10 @@
     </nav>
     <main class="fondo-black">
         <div class="container">
-                <div class="fondo-contenido d-flex align-items-start justify-content-center">
-                            <div class="fonro mb-3 align-items-center">
+            <div class="fondo-contenido d-flex align-items-start justify-content-center">
+                <section class="subir-producto">
+                    <div class="subir-titulo">
+                        <div class="mb-3 align-items-center">
                             <h1 class="tit">Inserte datos para comprar.</h1>
                             <!-- se modifico form-control:focus -->
                             <input type="text" placeholder=" Numero de tarjeta" class="tar" oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0,  16)" required>
@@ -90,7 +91,9 @@
                             <input type="month" type="number" min="2023-08" placeholder="Venc." class="tar4">
                             <input type="text" placeholder="Direccion (Casa, Depto, Lugar)" class="tar5">
                             <input type="text" placeholder="C.P" class="tar6" oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0,  4)" required>
-                            <input type="button" value="         Continuar" class="tar8">    
+                            <input type="button" value="Continuar" class="tar8">
+                            </section>
+                        </div>
                     </div>
                   
                 </section>
