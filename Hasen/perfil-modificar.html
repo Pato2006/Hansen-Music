@@ -85,15 +85,16 @@
     </nav>
     <main class="fondo-perfil">
         <div class="perfil-fondo d-flex align-items-start">
-            <div class="perfil-foto">
-                <img src="img-svg/person.svg" alt="" id="imagen_perfil"><br>
-                <div class="text-center ms-5 mt-4">
-                    <input class="form-control" id="formFileLg" type="file"><br>
-                    <button type="button" class="btn btn-lg borrar mt-4 ms-5">Borrar imagen actual</button>
+            <form action="" id="form_actualizar" method="POST" enctype="multipart/form-data">
+                <div class="perfil-foto">                
+                    <img src="img-svg/person.svg" alt="" id="imagen_perfil"><br>
+                    <div class="text-center ms-5 mt-4">
+                        <input class="form-control" id="formFileLg" type="file" name="imagen"><br>
+                        <button type="button" class="btn btn-lg borrar mt-4 ms-5">Borrar imagen actual</button>
+                    </div>
+                    <input type="hidden" name="MAX_FILE_SIZE" value="100000">
                 </div>
-            </div>
-            <div class="perfil-informacion">
-                <form action="" id="form_actualizar" method="POST">
+                <div class="perfil-informacion">
                     <input type="text" class="perfil" placeholder="Nombre de usuario" id="nombre" name="nombre">
                     <input type="text" class="descripcion" placeholder="Mail de contacto" id="mail" name="mail">
                     <input type="text" class="descripcion" disabled placeholder="La puntación NO la pones vos">
@@ -110,9 +111,9 @@
                         </ul>
                     </div>
                     <input type="hidden" name="entrega" id="entregaInput">
-                    <button type="submit" class="btn btn-lg ms-5 mt-4" id="actualizar">Aceptar</button>
-                </form>
-            </div>
+                    <button type="button" class="btn btn-lg ms-5 mt-4" id="actualizar">Aceptar</button>
+                </div>
+            </form>            
         </div>
     </main>
     <div class="recuadro">

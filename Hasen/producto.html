@@ -86,23 +86,29 @@
     </nav>
     <main class="products">
         <div class="filtro d-flex flex-column">
-            <div>
+            <div class="marca">
                 <input type="text" class="text" placeholder="Marca" disabled id="marca">
-                <button class="boton marca">Martin</button>
-                <button class="boton marca">Gibson</button>
-                <button class="boton marca">Takamine</button>
+                <button class="boton clase">Martin</button>
+                <button class="boton clase">Gibson</button>
+                <button class="boton clase">Takamine</button>
             </div>
-            <input type="text" class="iten" placeholder="Orientacion" disabled id="orientacion">
-            <button class="boton orientacion">Diestro</button>
-            <button class="boton orientacion">Zurdo</button>
-            <button class="boton orientacion">Ambidiestro</button>
-            <input type="text" class="iten" placeholder="Estado" disabled id="condicion">
-            <button class="boton estado">Nuevo</button>
-            <button class="boton estado">Usado</button>
-            <input type="text" class="iten" placeholder="Precio" disabled id="precio">
-            <button class="boton plata">Hasta $100.000</button>
-            <button class="boton plata">entre $100.000 y $200.000</button>
-            <button class="boton" id="plata_entre">Más de $200.000</button>
+            <div class="Orientacion">
+                <input type="text" class="iten" placeholder="Orientacion" disabled id="orientacion">
+                <button class="boton clase">Diestro</button>
+                <button class="boton clase">Zurdo</button>
+                <button class="boton clase">Ambidiestro</button>    
+            </div>
+            <div class="Estado">
+                <input type="text" class="iten" placeholder="Estado" disabled id="condicion">
+                <button class="boton clase">Nuevo</button>
+                <button class="boton clase">Usado</button>    
+            </div>
+            <div class="Dinero">
+                <input type="text" class="iten" placeholder="Precio" disabled id="precio">
+                <button class="boton clase">Hasta $100.000</button>
+                <button class="boton clase">entre $100.000 y $200.000</button>
+                <button class="boton clase" id="plata_entre">Más de $200.000</button>    
+            </div>
             <div class="precio-producto">
                 <input type="number" class="precio-boton">
                 <div class="precio-espacio"></div>

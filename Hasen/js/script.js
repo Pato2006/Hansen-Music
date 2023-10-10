@@ -21,7 +21,6 @@ $(document).ready(function () {
                 currentImage.attr('src', e.target.result);
                 currentImageIndex++;
             };
-
             reader.readAsDataURL(file);
         }
     });
@@ -36,16 +35,18 @@ $(document).ready(function () {
     });
 
     // Subir imagenes y borrarla Perfil 
-    $('#formFileLg').on('change', function () {
+   $('#formFileLg').on('change', function () {
+    /*
         var file = this.files[0];
         var reader = new FileReader();
 
         reader.onload = function (e) {
             $('.perfil-foto img').attr('src', e.target.result);
         };
-
         reader.readAsDataURL(file);
-    });
+    */
+   // AJAX A OTRO PHP PARA QUE FUNCIONE, VER perfil_subir.php
+    }); 
     $('.borrar').click(function () {
         var currentImage = $('.perfil-foto img');
         currentImage.attr('src', 'img-svg/person.svg');

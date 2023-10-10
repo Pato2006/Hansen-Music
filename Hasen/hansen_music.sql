@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-10-2023 a las 01:43:40
+-- Tiempo de generación: 10-10-2023 a las 17:36:39
 -- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.0.25
+-- Versión de PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,19 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `hansen_music`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `compras`
+--
+
+CREATE TABLE `compras` (
+  `id_compra` int(255) NOT NULL,
+  `id_vendedor` int(255) NOT NULL,
+  `id_comprador` varchar(255) NOT NULL,
+  `id_producto` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -70,12 +83,21 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `nombre_usuario`, `contraseña`, `correo`, `reputacion`, `envio`) VALUES
-(2, 'pato', 'Pato', '$2y$10$2SYIEXDO.CCPo3vrqnuo8.9fJ1LMQFr3ksHOuHxQb.z2q0WQZSda2', 'pato', NULL, ''),
-(9, 'NEgrosSucio', 'ASDASDsA', '$2y$10$JxP.gB/DAQuRKhCcirFfN.GZvalQ0zuar3O5URKT4vk2K0gTpjiS2', 'ASDASDsAd', NULL, 'Hogar y envío');
+(1, 'pato', 'as', '$2y$10$ffGReFfA4rlNiXxv2o3WFefwG2zbPErDvtm0JZcwXrXDgg63zB1me', 'qwe', 2, ''),
+(2, 'Taker', 'asa', '$2y$10$MaXKc3fH2F8UwyusH0D9W.neQUAJyhk..SF2yDyv1Yw0LE2.XGAOW', 'asa', NULL, 'Hogar y envío'),
+(3, '', NULL, '$2y$10$FXqBYZXL9u/lkUvLbkIX.uFRaQE2vTwLjpoD1TY09o0xY7WV271Hi', NULL, NULL, NULL),
+(4, '', NULL, '$2y$10$TNKnCMRAc7vEZEO0qyf9EO86D.9T3gBsJfwo6./815qsx06rbXWeG', NULL, NULL, NULL);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `compras`
+--
+ALTER TABLE `compras`
+  ADD PRIMARY KEY (`id_compra`),
+  ADD KEY `fk_id_vendedor` (`id_vendedor`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -88,10 +110,26 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `compras`
+--
+ALTER TABLE `compras`
+  MODIFY `id_compra` int(255) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `compras`
+--
+ALTER TABLE `compras`
+  ADD CONSTRAINT `fk_id_vendedor` FOREIGN KEY (`id_vendedor`) REFERENCES `usuarios` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
