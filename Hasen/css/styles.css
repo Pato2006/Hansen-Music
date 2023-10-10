@@ -720,7 +720,10 @@ input[type="file"] {
 .tit{
   position: relative;
   align-items: center;
+  margin-left: 18%;
   margin-bottom: 10px;
+  width: 70%;
+  max-width: 100%;
 }
 .tar{
   border: rgb(208, 207, 207);
