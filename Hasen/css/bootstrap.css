@@ -11284,5 +11284,29 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+#pipi{
+  color: white;
+  margin-left: 270px;
+  margin-right: 270px;
+  height: 15px;
+}
+#lol{
+  height: 77px;
+  width: 450px;
+}
+
+#sos{
+  margin-top: 50px;
+  height: 60px;
+  width: 300px;
+}
+
+#penoso {
+  color:#2A2954;
+}
+
+#sosas {
+  background-color: grey;
+}
 
 /*# sourceMappingURL=bootstrap.css.map */
