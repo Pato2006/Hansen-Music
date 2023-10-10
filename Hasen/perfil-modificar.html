@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="css/asd.css">
     <link rel="shortcut icon" href="img-svg/guitarra.svg" type="image/x-icon">
     <title>Hansen Music</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
     <link rel="stylesheet" href="css/cesese.css">
     <script src="js/script.js"></script>
     <script src="js/perfil_subir.js"></script>
@@ -85,15 +86,15 @@
     </nav>
     <main class="fondo-perfil">
         <div class="perfil-fondo d-flex align-items-start">
-            <div class="perfil-foto">
-                <img src="img-svg/person.svg" alt="" id="imagen_perfil"><br>
-                <div class="text-center ms-5 mt-4">
-                    <input class="form-control" id="formFileLg" type="file"><br>
-                    <button type="button" class="btn btn-lg borrar mt-4 ms-5">Borrar imagen actual</button>
+            <form action="" id="form_actualizar" method="POST" enctype="multipart/form-data">
+                <div class="perfil-foto">                
+                    <img src="img-svg/person.svg" alt="" id="imagen_perfil"><br>
+                    <div class="text-center ms-5 mt-4">
+                        <input class="form-control" id="formFileLg" type="file" name="imagen" onchange="FotoPerfil()"><br>
+                        <button type="button" class="btn btn-lg borrar mt-4 ms-5">Borrar imagen actual</button>
+                    </div>
                 </div>
-            </div>
-            <div class="perfil-informacion">
-                <form action="" id="form_actualizar" method="POST">
+                <div class="perfil-informacion">
                     <input type="text" class="perfil" placeholder="Nombre de usuario" id="nombre" name="nombre">
                     <input type="text" class="descripcion" placeholder="Mail de contacto" id="mail" name="mail">
                     <input type="text" class="descripcion" disabled placeholder="La puntación NO la pones vos">
@@ -110,9 +111,9 @@
                         </ul>
                     </div>
                     <input type="hidden" name="entrega" id="entregaInput">
-                    <button type="submit" class="btn btn-lg ms-5 mt-4" id="actualizar">Aceptar</button>
-                </form>
-            </div>
+                    <button type="button" class="btn btn-lg ms-5 mt-4" id="actualizar">Aceptar</button>
+                </div>
+            </form>            
         </div>
     </main>
     <div class="recuadro">

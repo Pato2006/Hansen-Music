@@ -7,12 +7,13 @@ $(document).ready(function () {
     $.ajax({
       url: "PHP/perfil_subir.php",
       type: "POST",
-      dataType: "text",
+      dataType: "blob",
       data: $("#form_actualizar").serialize(),
       async: false,
       success: function (data) {
         alert(data)
-        window.location.href = "index.html"
+        alert($("#form_actualizar").serialize())
+        //window.location.href = "index.html"
       },
       error: function (data) {
         alert(data)
@@ -20,3 +21,37 @@ $(document).ready(function () {
     });
   })
 })
+function FotoPerfil() {
+  var form = document.getElementById("form_actualizar");
+  var imagenInput = document.getElementById("formFileLg");
+  
+  if (imagenInput && imagenInput.files.length > 0) {
+    var archivo = imagenInput.files[0];
+
+    // Crea un objeto FormData para enviar todos los datos
+    var formData = new FormData(form);
+
+    // Agrega los atributos del archivo al objeto FormData
+    formData.append("nomb", archivo.name);
+    formData.append("tipo", archivo.type);
+    formData.append("tamaño", archivo.size);
+
+    $.ajax({
+      url: "PHP/perfil_subir_img.php",
+      type: "POST",
+      dataType: "text",
+      data: formData,
+      processData: false,  // Evita que jQuery procese los datos
+      contentType: false,  // Evita que jQuery establezca el encabezado Content-Type
+      async: false,
+      success: function (data) {
+        alert(data);
+      },
+      error: function (data) {
+        alert(data);
+      },
+    });
+  } else {
+    alert("Selecciona una imagen antes de enviar.");
+  }
+}
