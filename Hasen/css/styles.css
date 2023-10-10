@@ -718,18 +718,20 @@ input[type="file"] {
 
 /* Estilo para centrar los inputs de texto */
 .tit{
-  position: absolute;
-  margin-top: -70px;
-  margin-left: -250px;
-  
+  position: relative;
+  align-items: center;
+  margin-bottom: 10px;
 }
 .tar{
   border: rgb(208, 207, 207);
   border-radius: 20px;
+  display:flex;
   height: 50px;
+  align-items: center;
   width: 360px;
   position: relative;
-  margin-left: -200px;
+  margin-bottom: 15px;
+  margin-left: 20px;
   text-align: center;
   padding: 5px;
   
@@ -737,56 +739,68 @@ input[type="file"] {
 .tar2{
   border:rgb(208, 207, 207);
   border-radius: 20px;
+  display:flex;
+  margin-bottom: 15px;
+  margin-left: 20px;
+  align-items: center;
   height: 50px;
   width: 360px;
-  position: absolute;
-  margin-top: 70px;
-  margin-left: -360px;
+  position: relative;
   text-align: center;
   padding: 5px;
 }
-.tar3{
-  border:rgb(208, 207, 207);
+.tar3 {
+  border: rgb(208, 207, 207);
   border-radius: 20px;
+  display: inline-flex; 
+  align-items: center;
+  margin-bottom: 15px;
+  margin-left: 20px;
   height: 50px;
   width: 100px;
-  position: absolute;
-  margin-top: 140px;
-  margin-left: -360px;
+  position: relative;
   text-align: center;
   padding: 5px;
 }
-.tar4{
-  border:rgb(208, 207, 207);
+
+.tar4 {
+  border: rgb(208, 207, 207);
   border-radius: 20px;
+  display: inline-flex; 
+  margin-bottom: 15px;
+  margin-left: 105px;
+  align-items: center;
   height: 50px;
   width: 150px;
-  position: absolute;
-  margin-top: 140px;
-  margin-left: -230px;
+  position: relative;
   text-align: justify;
   text-size-adjust: 3px;
   padding: 5px;
 }
+
 .tar5{
   border:rgb(208, 207, 207);
   border-radius: 20px;
+  display:flex;
+  margin-bottom: 15px;
+  margin-left: 20px;
+  align-items: center;
   height: 50px;
   width: 360px;
-  position: absolute;
-  margin-top: 210px;
-  margin-left: -360px;
+  position: relative;
   text-align: center;
   padding: 5px;
 }
 .tar6{
   border:rgb(208, 207, 207);
   border-radius: 20px;
+  margin-left: 20px;
+  display:flex;
+  margin-bottom: 15px;
+  align-items: center;
   height: 50px;
   width: 80px;
-  position: absolute;
-  margin-top: 280px;
-  margin-left: -360px;
+  position: relative;
   text-align: center;
   padding: 5px;
 }
@@ -794,9 +808,11 @@ input[type="file"] {
     height: 80px;
     width: 200px;
     text-align: center;
-    position: absolute;
-    margin-top: 350px;
-    margin-left: -280px;
+    margin-left: 20px;
+    position: relative;
+    display: flex;
+    margin-bottom: 15px;
+    align-items: center;
     padding: 5px;
     border-radius: 200px;
     background-color: #8ca0ff;
@@ -807,10 +823,12 @@ input[type="file"] {
 .tar8{
   height: 80px;
   width: 200px;
+  display: flex;
+  margin-left: 90px;
+  margin-bottom: 15px;
+  align-items: center;
   text-align: center;
-  position: absolute;
-  margin-top: 350px;
-  margin-left: -280px;
+  position: relative;
   padding: 5px;
   border-radius: 200px;
   background-color: #1C1C3D;
