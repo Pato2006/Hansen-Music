@@ -9,7 +9,7 @@ $(document).ready(function () {
       success: function (response) {
           if(response == "1"){
             alert("Registro Exitoso")
-            window.location.href = "perfil-modificar.html";  
+            window.location.href = "login.html";  
           }
           else{
             alert("algo ingresaste mal")

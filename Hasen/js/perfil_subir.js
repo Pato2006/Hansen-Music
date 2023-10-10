@@ -11,6 +11,7 @@ $(document).ready(function () {
       data: $("#form_actualizar").serialize(),
       async: false,
       success: function (data) {
+        alert(data)
         window.location.href = "index.html"
       },
       error: function (data) {

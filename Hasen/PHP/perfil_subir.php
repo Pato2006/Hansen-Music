@@ -8,7 +8,7 @@ $nombre = $_SESSION['nombre'];
 $nombre_usuario = $_POST['nombre'];
 $mail = $_POST['mail'];
 $entrega = $_POST['entrega'];
-$foto = $_POST['foto'];
+// $foto = $_POST['foto'];
 
 $sql = "SELECT * FROM usuarios WHERE nombre = '$nombre'";
 
@@ -18,7 +18,7 @@ if (mysqli_num_rows($result) > 0) {
     $sql_insert = "UPDATE usuarios SET nombre_usuario = '$nombre_usuario', correo = '$mail', envio = '$entrega' WHERE nombre = '$nombre'";
     if (mysqli_query($con, $sql_insert)) {
         echo "Actualizacion Exitosa";
-        copy($foto, "imagenes_perfil/$nombre");
+//        copy($foto, "imagenes_perfil/$nombre");
     }
     else {
         echo "Hubo un error al modificar los datos: " . mysqli_error($con);
