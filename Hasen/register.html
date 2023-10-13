@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="css/cesese.css">
     <script src="js/script.js"></script>
     <script src="js/registro.js"></script>
+    <script src="js/busqueda.js"></script>
     <title>Hansen Music</title>
 </head>
 
@@ -49,12 +50,13 @@
                 </svg>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="d-flex pe-2 text-center ms-4" role="search" action="producto.html">
+                <form id="buscador" class="d-flex pe-2 text-center ms-4" role="search" method="post"
+                    action="producto.html">
                     <div class="row">
                         <div class="col-4 d-flex align-items-center flex-grow-1">
-                            <input class="form-control form-control-lg me-2" type="search"
-                                placeholder="Que estas buscando?" aria-label="Search">
-                            <button class="btn btn-outline btn-lg" type="submit">
+                            <input name="texto_buscar" id="buscador" class="form-control form-control-lg me-2"
+                                type="search" placeholder="Que estas buscando?" aria-label="Search">
+                            <button class="btn btn-outline btn-lg" type="button" id="busqueda">
                                 <img src="img-svg/search.svg" alt="">
                             </button>
                         </div>
@@ -65,7 +67,7 @@
                             tu producto</a></li>
                     <li class=""><a href="login.html" class="nav-link ms-3"></a></li>
                     <div class="nav-item dropdown">
-                        <button id="menuDropdown" class="btn btn-secondary dropdown-toggle nav-item" type="button"
+                        <button id="menuDropdown" class="btn   dropdown-toggle nav-item" type="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="img-svg/person.svg" alt="">
                         </button>
@@ -96,15 +98,21 @@
                                         <div class="form-outline form-white mb-4">
                                             <p class="form-label" for="typeEmailX">Nombre de usuario</p>
                                             <input type="email" id="typeEmailX" class="form-control form-control-lg"
-                                                style="width: 380px;" name="nombre"/>
+                                                style="width: 380px;" name="nombre" />
+                                        </div>
+                                        <div class="form-outline form-white mb-4">
+                                            <p class="form-label" for="typeEmailX">Correo Electronico</p>
+                                            <input type="email" id="typeEmailX" class="form-control form-control-lg"
+                                                style="width: 380px;" name="correo" />
                                         </div>
                                         <div class="form-outline form-white mb-4">
                                             <p class="form-label" for="typePasswordX">Contraseña</p>
                                             <input type="password" id="typePasswordX"
-                                                class="form-control form-control-lg" style="width: 380px;" name="password"/>
+                                                class="form-control form-control-lg" style="width: 380px;"
+                                                name="password" />
                                         </div>
-                                        <button class="btn btn-outline btn-lg px-5 ms-2"
-                                            type="submit" id="registrarse">Registrar</button>
+                                        <button class="btn btn-outline btn-lg px-5 ms-2" type="submit"
+                                            id="registrarse">Registrar</button>
                                     </form>
                                 </div>
                             </div>

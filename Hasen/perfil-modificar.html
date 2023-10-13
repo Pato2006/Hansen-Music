@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="css/cesese.css">
     <script src="js/script.js"></script>
     <script src="js/perfil_subir.js"></script>
+    <script src="js/busqueda.js"></script>
 </head>
 
 <body>
@@ -52,12 +53,13 @@
                 </svg>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="d-flex pe-2 text-center ms-4" role="search" action="producto.html">
+                <form id="buscador" class="d-flex pe-2 text-center ms-4" role="search" method="post"
+                    action="producto.html">
                     <div class="row">
                         <div class="col-4 d-flex align-items-center flex-grow-1">
                             <input class="form-control form-control-lg me-2" type="search"
-                                placeholder="Que estas buscando?" aria-label="Search">
-                            <button class="btn btn-outline btn-lg" type="submit">
+                                placeholder="Que estas buscando?" aria-label="Search" name="texto_buscar">
+                            <button class="btn btn-outline btn-lg" id="busqueda">
                                 <img src="img-svg/search.svg" alt="">
                             </button>
                         </div>
@@ -68,7 +70,7 @@
                             tu producto</a></li>
                     <li class=""><a href="login.html" class="nav-link ms-3"></a></li>
                     <div class="nav-item dropdown">
-                        <button id="menuDropdown" class="btn btn-secondary dropdown-toggle nav-item" type="button"
+                        <button id="menuDropdown" class="btn   dropdown-toggle nav-item" type="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="img-svg/person.svg" alt="">
                         </button>
@@ -87,10 +89,11 @@
     <main class="fondo-perfil">
         <div class="perfil-fondo d-flex align-items-start">
             <form action="" id="form_actualizar" method="POST" enctype="multipart/form-data">
-                <div class="perfil-foto">                
+                <div class="perfil-foto">
                     <img src="img-svg/person.svg" alt="" id="imagen_perfil"><br>
                     <div class="text-center ms-5 mt-4">
-                        <input class="form-control" id="formFileLg" type="file" name="imagen" onchange="FotoPerfil()"><br>
+                        <input class="form-control" id="formFileLg" type="file" name="imagen"
+                            onchange="FotoPerfil()"><br>
                         <button type="button" class="btn btn-lg borrar mt-4 ms-5">Borrar imagen actual</button>
                     </div>
                 </div>
@@ -109,11 +112,11 @@
                             <li><a class="dropdown-item" href="#"
                                     onclick="seleccionarOpcion('entrega', 'Hogar y envío')">Hogar y envío</a></li>
                         </ul>
+                        <input type="hidden" name="entrega_selec" id="entrega_seleccionada">
                     </div>
-                    <input type="hidden" name="entrega" id="entregaInput">
                     <button type="button" class="btn btn-lg ms-5 mt-4" id="actualizar">Aceptar</button>
                 </div>
-            </form>            
+            </form>
         </div>
     </main>
     <div class="recuadro">

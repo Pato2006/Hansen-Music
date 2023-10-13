@@ -55,10 +55,10 @@ $(document).ready(function () {
 
 
 // Elegir Opcion Input 
-function seleccionarOpcion(entrega, opcion) {
-    dropdown = document.getElementById(`${entrega}Dropdown`);
-    dropdown.innerHTML = opcion;
-    $("#entregaInput").val(opcion);
+function seleccionarOpcion(categoria, opcion) {
+    dropdown = document.getElementById(`${categoria}Dropdown`);
+    input = document.getElementById(`${categoria}_seleccionado`); 
+
+    dropdown.innerHTML = opcion; 
+    input.value = opcion; 
 }
-
-
