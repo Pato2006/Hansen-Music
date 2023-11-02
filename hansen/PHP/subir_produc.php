@@ -14,3 +14,5 @@ $sql = "INSERT INTO publications (name, description,  price, brand, state, orien
 $result = mysqli_query($con,$sql);
 echo mysqli_error($con);
 die($sql);
+
+//loooooooooooooooooooool!!!
