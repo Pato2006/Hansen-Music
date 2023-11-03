@@ -82,7 +82,7 @@ $(document).ready(function () {
 
                 $.each(data["brands"], function (index, brand) {
 
-                    str += `<li><a  class="dropdown-item" href="#"onclick="seleccionarOpcion('brand', '` + brand.id + `')">` + brand.brand + `</a></li>`
+                    str += `<li><a  class="dropdown-item" href="#"onclick="seleccionarOpcion('brand', '` + brand.id + `')">` + brand.name + `</a></li>`
 
                 });
                 str += `</ul>
@@ -138,7 +138,7 @@ $(document).ready(function () {
                                         <div class="subir-precio">
                                             <div class="input-group input-group-lg mb-3 align-items-center">
                                                 <section class="rounded">
-                                                    <input type="text" class="form-control form-control-lg" placeholder="Precio"
+                                                    <input type="number" class="form-control form-control-lg" placeholder="Precio"
                                                         id="precio" name="precio">
                                                 </section>
                                             </div>
@@ -161,7 +161,8 @@ $(document).ready(function () {
                         data: data,
                         async: false,
                         success: function (asd) {
-                            console.log(asd);
+                            console.log(data);
+                            alert (data)
                         }
                     })
                 })
