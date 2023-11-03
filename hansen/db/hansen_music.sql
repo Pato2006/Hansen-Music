@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-11-2023 a las 21:27:32
+-- Tiempo de generación: 03-11-2023 a las 23:43:17
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -50,7 +50,7 @@ INSERT INTO `brands` (`id`, `name`) VALUES
 CREATE TABLE `buys` (
   `id` int(8) NOT NULL,
   `user_buyer_id` int(8) NOT NULL,
-  `product_id` int(8) NOT NULL,
+  `publication_id` int(8) NOT NULL,
   `status_id` int(8) DEFAULT NULL,
   `purchase_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -83,10 +83,19 @@ INSERT INTO `orientations` (`id`, `name`) VALUES
 
 CREATE TABLE `products` (
   `id` int(8) NOT NULL,
-  `publication_id` int(8) NOT NULL,
+  `name` varchar(64) NOT NULL,
   `brand_id` int(8) NOT NULL,
   `orientation_id` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `brand_id`, `orientation_id`) VALUES
+(1, 'Firebird X', 2, 2),
+(2, 'Alhambra AJ-CR E9', 1, 1),
+(3, 'GD30CE-12', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -97,6 +106,7 @@ CREATE TABLE `products` (
 CREATE TABLE `publications` (
   `id` int(8) NOT NULL,
   `seller_id` int(8) DEFAULT NULL,
+  `product_id` int(8) DEFAULT NULL,
   `name` varchar(50) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `price` int(9) DEFAULT NULL,
@@ -107,14 +117,14 @@ CREATE TABLE `publications` (
 -- Volcado de datos para la tabla `publications`
 --
 
-INSERT INTO `publications` (`id`, `seller_id`, `name`, `description`, `price`, `state`) VALUES
-(19, NULL, 'Guitarra Acústica', '', 500, 'Nuevo'),
-(20, NULL, 'Teclado Eléctrico', '', 750, 'Usado'),
-(21, NULL, 'Batería Electrónica', '', 1000, 'Nuevo'),
-(22, NULL, 'Bajo Eléctrico', '', 600, 'Nuevo'),
-(23, NULL, 'Saxofón Tenor', '', 800, 'Nuevo'),
-(24, NULL, 'Trompeta', '', 550, 'Usado'),
-(25, NULL, 'Guitarra zurda', '', 12000, 'Nuevo');
+INSERT INTO `publications` (`id`, `seller_id`, `product_id`, `name`, `description`, `price`, `state`) VALUES
+(19, NULL, NULL, 'Guitarra Acústica', '', 500, 'Nuevo'),
+(20, NULL, NULL, 'Teclado Eléctrico', '', 750, 'Usado'),
+(21, NULL, NULL, 'Batería Electrónica', '', 1000, 'Nuevo'),
+(22, NULL, NULL, 'Bajo Eléctrico', '', 600, 'Nuevo'),
+(23, NULL, NULL, 'Saxofón Tenor', '', 800, 'Nuevo'),
+(24, NULL, NULL, 'Trompeta', '', 550, 'Usado'),
+(25, NULL, NULL, 'Guitarra zurda', '', 12000, 'Nuevo');
 
 -- --------------------------------------------------------
 
@@ -188,7 +198,7 @@ ALTER TABLE `buys`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_user_buyer_id` (`user_buyer_id`),
   ADD KEY `FK_status_id` (`status_id`),
-  ADD KEY `FK_product_id` (`product_id`);
+  ADD KEY `FK_publication_id` (`publication_id`);
 
 --
 -- Indices de la tabla `orientations`
@@ -202,7 +212,6 @@ ALTER TABLE `orientations`
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_brand` (`brand_id`),
-  ADD KEY `FK_publications_id` (`publication_id`),
   ADD KEY `FK_orientation_id` (`orientation_id`);
 
 --
@@ -210,7 +219,8 @@ ALTER TABLE `products`
 --
 ALTER TABLE `publications`
   ADD PRIMARY KEY (`id`) USING BTREE,
-  ADD KEY `vendedor` (`seller_id`);
+  ADD KEY `vendedor` (`seller_id`),
+  ADD KEY `FK_product_id` (`product_id`);
 
 --
 -- Indices de la tabla `sends`
@@ -257,7 +267,7 @@ ALTER TABLE `orientations`
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `publications`
@@ -291,7 +301,7 @@ ALTER TABLE `users`
 -- Filtros para la tabla `buys`
 --
 ALTER TABLE `buys`
-  ADD CONSTRAINT `FK_product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `FK_publication_id` FOREIGN KEY (`publication_id`) REFERENCES `publications` (`id`),
   ADD CONSTRAINT `FK_status_id` FOREIGN KEY (`status_id`) REFERENCES `status` (`id`),
   ADD CONSTRAINT `fk_user_buyer_id` FOREIGN KEY (`user_buyer_id`) REFERENCES `users` (`id`);
 
@@ -300,13 +310,13 @@ ALTER TABLE `buys`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `FK_orientation_id` FOREIGN KEY (`orientation_id`) REFERENCES `orientations` (`id`),
-  ADD CONSTRAINT `FK_publications_id` FOREIGN KEY (`publication_id`) REFERENCES `publications` (`id`),
   ADD CONSTRAINT `fk_brand` FOREIGN KEY (`brand_id`) REFERENCES `brands` (`id`);
 
 --
 -- Filtros para la tabla `publications`
 --
 ALTER TABLE `publications`
+  ADD CONSTRAINT `FK_product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
   ADD CONSTRAINT `publications_ibfk_1` FOREIGN KEY (`seller_id`) REFERENCES `users` (`id`);
 
 --
