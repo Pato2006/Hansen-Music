@@ -1,24 +1,34 @@
 <?php
 require_once "env.php";
 
-
 $texto = isset($_POST['texto_buscar']) ? $_POST['texto_buscar'] : '';
+
 $marca = isset($_POST['marca']) ? $_POST['marca'] : '';
+
 $orientacion = isset($_POST['orientacion']) ? $_POST['orientacion'] : '';
+
 $estado = isset($_POST['estado']) ? $_POST['estado'] : '';
 
+$sql = "SELECT publications.name, publications.price, orientations.name AS orientation, brands.name AS brand
 
-$sql = "SELECT * FROM publications WHERE name LIKE '%" . $texto . "%'";
+        FROM publications
+
+        INNER JOIN products ON publications.product_id = products.id
+        INNER JOIN brands ON products.brand_id = brands.id
+        INNER JOIN orientations ON products.orientation_id = orientations.id
+        
+        WHERE publications.name LIKE '%" . $texto . "%'";
+
 if (!empty($marca)) {
-    $sql .= " AND brand = '$marca'";
+    $sql .= " AND brands.id = '$marca'";
 }
 
 if (!empty($orientacion)) {
-    $sql .= " AND orientation = '$orientacion'";
+    $sql .= " AND orientations.id = '$orientacion'";
 }
 
 if (!empty($estado)) {
-    $sql .= " AND state = '$estado'";
+    $sql .= " AND publications.state = '$estado'";
 }
 
 $result = mysqli_query($con, $sql);

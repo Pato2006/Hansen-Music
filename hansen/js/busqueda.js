@@ -64,7 +64,7 @@ function bus(marca_id, orientacion_id) {
                     `
 
       $.each(data["brands"], function (index, brands) {
-        str += '<button id=' + brands.id + ' class="boton marca">' + brands.brand + '</button>';
+        str += '<button id=' + brands.id + ' class="boton marca">' + brands.name + '</button>';
       });
 
 
@@ -107,28 +107,18 @@ function bus(marca_id, orientacion_id) {
         str += '<div class="descripcion">';
         str += "<h3>" + data["publications"][i].name + "</h1>";
         str += "<h3>" + "$" + data["publications"][i].price + "</h4>";
-        str += "<h4>" + data["orientations"][data["publications"][i].orientation]['orientation'] + "</h4>";
-        str += "<h4>" + data["brands"][data["publications"][i].brand]['brand'] + "</h4>";
-        str += "<h3>" + data["publications"][i].state + "</h4>";
-        str += "<h3>" + data["publications"][i].name + "</h3>";
-        str += "<h3>" + "$" + data["publications"][i].price + "</h3>";
-        str += "<h3>" + data["orientations"][data["publications"][i].orientation]['orientation'] + "</h3>";
-        str += "<h3>" + data["brands"][data["publications"][i].brand]['brand'] + "</h3>";
         str += "</div>";
         str += "</div>";
         str += "</a>";
 
       }
 
-
-
-
       str += `
             </div>
             </div>
             
           </main>                    
-        `;
+        `
       str += `<div id="paginator" class="paginator">
         <button onclick="previousPage()"><</button>
         <div id="buttons" class="button-container">
