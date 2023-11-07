@@ -1,6 +1,6 @@
 $(document).ready(function () {
   $("#contenedor").on("click", "#actualizar", function () {
-    if (document.getElementById("mail").value === "" || document.getElementById("residencia").value === "" || document.getElementById("entregaDropdown").textContent === "") {
+    if (document.getElementById("mail").value === "" || document.getElementById("residencia").value === "") {
       alert("Ingresa datos")
       return;
     }

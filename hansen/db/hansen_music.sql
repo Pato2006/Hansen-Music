@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-11-2023 a las 23:43:17
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.0.28
+-- Tiempo de generación: 07-11-2023 a las 14:13:56
+-- Versión del servidor: 10.4.27-MariaDB
+-- Versión de PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -52,7 +52,8 @@ CREATE TABLE `buys` (
   `user_buyer_id` int(8) NOT NULL,
   `publication_id` int(8) NOT NULL,
   `status_id` int(8) DEFAULT NULL,
-  `purchase_date` date NOT NULL
+  `send_id` int(8) NOT NULL,
+  `purchase_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -177,9 +178,15 @@ CREATE TABLE `users` (
   `name` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `mail` varchar(255) DEFAULT NULL,
-  `send_id` int(8) DEFAULT NULL,
   `location` varchar(64) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `password`, `mail`, `location`) VALUES
+(2, 'Pato', '$2y$10$X6Ky/fmeHKOQX389365Mi.k7r1tkGYWjdQWwLKWvye21DQpIE9gxe', 'pato@gmail.coma', 'Luganiasdsad');
 
 --
 -- Índices para tablas volcadas
@@ -198,7 +205,8 @@ ALTER TABLE `buys`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_user_buyer_id` (`user_buyer_id`),
   ADD KEY `FK_status_id` (`status_id`),
-  ADD KEY `FK_publication_id` (`publication_id`);
+  ADD KEY `FK_publication_id` (`publication_id`),
+  ADD KEY `FK_send_id` (`send_id`);
 
 --
 -- Indices de la tabla `orientations`
@@ -238,8 +246,7 @@ ALTER TABLE `status`
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_send_id` (`send_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -291,7 +298,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
@@ -302,6 +309,7 @@ ALTER TABLE `users`
 --
 ALTER TABLE `buys`
   ADD CONSTRAINT `FK_publication_id` FOREIGN KEY (`publication_id`) REFERENCES `publications` (`id`),
+  ADD CONSTRAINT `FK_send_id` FOREIGN KEY (`send_id`) REFERENCES `sends` (`id`),
   ADD CONSTRAINT `FK_status_id` FOREIGN KEY (`status_id`) REFERENCES `status` (`id`),
   ADD CONSTRAINT `fk_user_buyer_id` FOREIGN KEY (`user_buyer_id`) REFERENCES `users` (`id`);
 
@@ -318,12 +326,6 @@ ALTER TABLE `products`
 ALTER TABLE `publications`
   ADD CONSTRAINT `FK_product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
   ADD CONSTRAINT `publications_ibfk_1` FOREIGN KEY (`seller_id`) REFERENCES `users` (`id`);
-
---
--- Filtros para la tabla `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `FK_send_id` FOREIGN KEY (`send_id`) REFERENCES `sends` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

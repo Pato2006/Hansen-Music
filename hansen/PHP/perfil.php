@@ -6,7 +6,7 @@ if ($name == "" || $name == null) {
     echo json_encode(array("error" => "No estas logeado"));
     exit;
 }
-$sql = "SELECT users.name, users.mail, sends.name AS state, users.location FROM users LEFT JOIN sends ON users.send_id = sends.id WHERE users.name = '$name';";
+$sql = "SELECT name, mail, location FROM users";
 $result = mysqli_query($con, $sql);
 
 if ($result) {
