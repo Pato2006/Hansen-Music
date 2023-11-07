@@ -10,7 +10,7 @@ $(document).ready(function () {
           alert(data.error);
           return;
         } else {
-          console.log(data)
+          console.log(data);
           str = `
             <main class="fondo-perfil">
                 <section class="perfil-fondo">
@@ -23,7 +23,6 @@ $(document).ready(function () {
                         <label class="descripcion" id="residencia"></label>
                     </div>
                 </section>
-                <label class="envio_label" id="envio"></label>
                 <a href="#"><button type="button" class="btn btn-lg ms-5" id="mod-info">Modificar informacion</button></a>
                 <button type="button" class="btn btn-danger m-4 p-2" id="borrar-cuenta">Borrar cuenta</button>
                 <button type="button" class="btn btn-warning" id="cerrar-sesion">Cerrar Sesion</button>
@@ -50,10 +49,12 @@ $(document).ready(function () {
           $("#perfil").html(usuario.name);
           $("#residencia").html(usuario.location);
           $("#correo").html(usuario.mail);
-          $("#envio").html(usuario.state);
-          console.log(data.imagenes[0])
+          console.log(data.imagenes[0]);
           if (data.imagenes[0]) {
-            $("#imagen_usuario").attr("src", "imagenes/perfil/" + data.imagenes[0]);
+            $("#imagen_usuario").attr(
+              "src",
+              "imagenes/perfil/" + data.imagenes[0]
+            );
           }
         }
       },
@@ -79,18 +80,8 @@ $(document).ready(function () {
                       <div class="perfil-informacion">
                       <input type="text" class="descripcion" placeholder="Mail de contacto" id="mail" name="mail">
                       <input type="text" class="descripcion" placeholder="Direccion de casa" id="residencia" name="residencia">
-                      <div class="input-group ms-5 mt-4">
-                              <button id="entregaDropdown" class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Envío</button>
-                              <ul class="dropdown-menu">
-                                  <li><a class="dropdown-item" href="#" onclick="seleccionarOpcion('entrega', 'Retiro en hogar')">Retiro en hogar</a></li>
-                                  <li><a class="dropdown-item" href="#" onclick="seleccionarOpcion('entrega', 'Envío')">Envío</a></li>
-                                  <li><a class="dropdown-item" href="#" onclick="seleccionarOpcion('entrega', 'Hogar y envío')">Hogar y envío</a></li>
-                              </ul>
-                              <input type="hidden" name="entrega_selec" id="entrega_seleccionado">
-                          </div>
-                          <button type="button" class="btn btn-lg ms-5 mt-4" id="actualizar">Aceptar</button>
-                      </div>
-                  </div>
+                      <button type="button" class="btn btn-lg ms-5 mt-4" id="actualizar">Aceptar</button>
+                    </div>
               </div>
           </form>
       </div>
@@ -105,8 +96,8 @@ $(document).ready(function () {
         success: function (data) {
           $("#residencia").val(data[0].location);
           $("#mail").val(data[0].mail);
-        }
-      })
+        },
+      });
     });
     $("#borrar-cuenta").click(function () {
       var confirmacion = confirm("¿Quieres borrar tu cuenta?");
@@ -121,7 +112,7 @@ $(document).ready(function () {
             window.location.href = "index.php";
           },
           error: function (error) {
-            console.log(error)
+            console.log(error);
             alert(error);
           },
         });
