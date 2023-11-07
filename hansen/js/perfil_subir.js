@@ -1,6 +1,6 @@
 $(document).ready(function () {
   $("#contenedor").on("click", "#actualizar", function () {
-    if (document.getElementById("mail").value === "" || document.getElementById("residencia").value === "" || document.getElementById("entregaDropdown").textContent === "") {
+    if (document.getElementById("mail").value === "" || document.getElementById("residencia").value === "") {
       alert("Ingresa datos")
       return;
     }
@@ -15,6 +15,7 @@ $(document).ready(function () {
         //window.location.href = "index.php";
       },
       error: function (data) {
+        console.log(data)
         alert(data);
       },
     });
@@ -55,7 +56,7 @@ function FotoPerfil() {
               var imagen = imagenes[i];
               if (nombreUsuario + ".png" === imagen) {
                 var randomValue = new Date().getTime();
-                var imageUrl = "imagenes/" + imagen + "?" + randomValue;
+                var imageUrl = "imagenes/perfil/" + imagen + "?" + randomValue;
                 $("#imagen_perfil").attr("src", imageUrl);
               }
             }

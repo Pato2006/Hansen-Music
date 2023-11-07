@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/keyframe.css">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="shortcut icon" href="img-svg/guitarra.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="imagenes/svg/guitarra.svg" type="image/x-icon">
     <link rel="stylesheet" href="css/cesese.css">
     <link rel="stylesheet" href="css/carrusel.css">
     <script src="js/script.js"></script>
@@ -44,7 +44,7 @@
         <div class="container">
             <a class="navbar-brand pe-4" href="index.php">
                 <svg class="" width="400" height="64" src="">
-                    <image xlink:href="img-svg/HansenLogoHorizontal.svg" width="100%" height="100%" />
+                    <image xlink:href="imagenes/svg/HansenLogoHorizontal.svg" width="100%" height="100%" />
                 </svg>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,7 +59,7 @@
                         <div class="col-4 d-flex align-items-center flex-grow-1">
                             <input name="texto_buscar" id="buscador" class="form-control form-control-lg me-2" type="search" placeholder="Que estas buscando?" aria-label="Search">
                             <button class="btn-bsq btn-outline btn-lg" type="button" id="busqueda">
-                                <img src="img-svg/search.svg" alt="">
+                                <img src="imagenes/svg/search.svg" alt="">
                             </button>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                     <div class="boton_solution">
                         <div class="nav-item dropdown">
                             <button id="menuDropdown" class="btn   dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown">
-                                <img src="img-svg/person.svg" alt="">
+                                <img src="imagenes/svg/person.svg" alt="">
                             </button>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#" id="registrarse-btn">Registrarse</a></li>
@@ -88,13 +88,13 @@
         <main id="carouselExample" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="img/carrusel1.png" class="d-block w-100" alt="Imagen 1">
+                    <img src="imagenes/carrusel/carrusel1.png" class="d-block w-100" alt="Imagen 1">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/carrusel2.png" class="d-block w-100" alt="Imagen 2">
+                    <img src="imagenes/carrusel/carrusel2.png" class="d-block w-100" alt="Imagen 2">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/carrusel3.png" class="d-block w-100" style="height: 25%;" alt="Imagen 3">
+                    <img src="imagenes/carrusel/carrusel3.png" class="d-block w-100" style="height: 25%;" alt="Imagen 3">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
@@ -105,25 +105,26 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Siguiente</span>
             </a>
-        </main>
-    </div>
-    <div class="logos">
+       <div class="logos">
         <div class="logos-slide">
-            <img src="./img-svg/marca1.svg">
-            <img src="./img-svg/marca2.svg">
-            <img src="./img-svg/marca3.svg">
-            <img src="./img-svg/marca4.svg">
-            <img src="./img-svg/marca5.svg">
+            <img src="imagenes/svg/marca1.svg">
+            <img src="imagenes/svg/marca2.svg">
+            <img src="imagenes/svg/marca3.svg">
+            <img src="imagenes/svg/marca4.svg">
+            <img src="imagenes/svg/marca5.svg">
         </div>
 
         <div class="logos-slide">
-            <img src="./img-svg/marca1.svg">
-            <img src="./img-svg/marca2.svg">
-            <img src="./img-svg/marca3.svg">
-            <img src="./img-svg/marca4.svg">
-            <img src="./img-svg/marca5.svg">
+            <img src="imagenes/svg/marca1.svg">
+            <img src="imagenes/svg/marca2.svg">
+            <img src="imagenes/svg/marca3.svg">
+            <img src="imagenes/svg/marca4.svg">
+            <img src="imagenes/svg/marca5.svg">
         </div>
+       </div>
+        </main>
     </div>
+    
 </body>
 
 </html>
