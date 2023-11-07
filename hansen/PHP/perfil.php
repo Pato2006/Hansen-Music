@@ -17,7 +17,7 @@ if ($result) {
     }
 }
 $imagenname = array();
-$directorio = '../imagenes/';
+$directorio = '../imagenes/perfil/';
 $imagen_buscar = $name . ".png";
 $archivos = scandir($directorio);
 if ($archivos) {

@@ -10,7 +10,7 @@ $(document).ready(function () {
                 <div class="card-body p-5 text-cente  r">
                   <div class="mb-md-5 mt-md-4 pb-5">
                     <h4 class="text-white-50 mb-5">Bienvenido a</h4>
-                    <img src="img-svg/HasenLogin.svg" alt="" class="mb-5">
+                    <img src="imagenes/svg/HasenLogin.svg" alt="" class="mb-5">
                     <p class="text-white-50 mb-5">Inicia Sesion</p>
                     <form action="" method="POST" id="form_login">
                     <div class="form-outline form-white mb-4">

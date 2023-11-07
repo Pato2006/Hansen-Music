@@ -148,7 +148,7 @@ footer ul {
 
 .gradient-custom {
   background: #2A2954;
-  background-image: url("../img-svg/jack-connector.svg"), url("../img-svg/electric-guitar.svg"), url("../img-svg/electric-piano.svg");
+  background-image: url(".imagenes/svg/jack-connector.svg"), url(".imagenes/svg/electric-guitar.svg"), url(".imagenes/svg/electric-piano.svg");
   background-repeat: repeat-y;
   background-position: left top, center, right top;
   background-size: auto, auto;

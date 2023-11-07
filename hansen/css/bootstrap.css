@@ -6115,7 +6115,7 @@ textarea.form-control-lg {
   } ]
 } */
 .carousel-control-prev-icon {
-  background-image: url("../img-svg/arrow-left-circle-fill.svg");
+  background-image: url("../imagenes/svg/arrow-left-circle-fill.svg");
   width: 90px;
   height: 90px;
   filter: invert(100%);
@@ -6123,7 +6123,7 @@ textarea.form-control-lg {
 }
 
 .carousel-control-next-icon {
-  background-image: url("../img-svg/arrow-right-circle-fill.svg");
+  background-image: url("../imagenes/svg/arrow-right-circle-fill.svg");
   width: 90px;
   height: 90px;
   filter: invert(100%);

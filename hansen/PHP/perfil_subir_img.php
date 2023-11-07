@@ -14,7 +14,7 @@ if (mysqli_query($con, $sql)) {
     if (!(strpos($tipo_imagen, 'png') || strpos($tipo_imagen, 'jpg') || strpos($tipo_imagen, 'jpeg'))) {
         echo "La imagen no es .png o .jpg";
     } else {
-        $directorio_destino = '../imagenes/';
+        $directorio_destino = '../imagenes/perfil/';
         $ruta_imagen = $directorio_destino . $name . ".png";
         if (rename($temp_imagen, $ruta_imagen)) {
             echo "El archivo ha sido cargado correctamente.";

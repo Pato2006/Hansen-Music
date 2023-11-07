@@ -11,7 +11,7 @@ $(document).ready(function () {
                             <div class="mb-md-5 mt-md-4 pb-5">
                                 <form action="" id="form_register" method="POST">
                                     <h4 class="text-white-50 mb-5">Bienvenido a</h4>
-                                    <img src="img-svg/HasenLogin.svg" alt="" class="mb-5">
+                                    <img src="imagenes/svg/HasenLogin.svg" alt="" class="mb-5">
                                     <p class="text-white-50 mb-5">Registrate</p>
                                     <div class="form-outline form-white mb-4">
                                         <p class="form-label" for="">Nombre de usuario</p>
