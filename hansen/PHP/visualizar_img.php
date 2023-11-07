@@ -14,7 +14,7 @@ if ($result) {
     mysqli_close($con);
 }
 
-$imagenes = scandir('../imagenes');
+$imagenes = scandir('../imagenes/perfil/');
 $imagenname = array();
 foreach ($imagenes as $archivo) {
     if (pathinfo($archivo, PATHINFO_EXTENSION) === 'png') {

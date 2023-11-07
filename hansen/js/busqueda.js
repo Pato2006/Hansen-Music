@@ -91,7 +91,7 @@ function bus(marca_id, orientacion_id) {
                     <input type="number" class="precio-boton">
                     <div class="precio-espacio"></div>
                     <input type="number" class="precio-boton m-0">
-                    <button class="send"><img src="img-svg/box-arrow-in-right.svg" alt="Precio"></button>
+                    <button class="send"><img src="imagenes/svg/box-arrow-in-right.svg" alt="Precio"></button>
                 </div>
             </div>
             `;
@@ -171,13 +171,13 @@ function clickeado(id) {
                           </div>
                           <div class="carousel-inner">
                               <div class="carousel-item active">
-                                  <img src="img-svg/plus-lg.svg" class="d-block w-100" alt="Plus Icon" id="img1">
+                                  <img src="imagenes/svg/plus-lg.svg" class="d-block w-100" alt="Plus Icon" id="img1">
                               </div>
                               <div class="carousel-item">
-                                  <img src="img-svg/plus-lg.svg" class="d-block w-100" alt="Plus Icon" id="img2">
+                                  <img src="imagenes/svg/plus-lg.svg" class="d-block w-100" alt="Plus Icon" id="img2">
                               </div>
                               <div class="carousel-item">
-                                  <img src="img-svg/plus-lg.svg" class="d-block w-100" alt="Plus Icon" id="img3">
+                                  <img src="imagenes/svg/plus-lg.svg" class="d-block w-100" alt="Plus Icon" id="img3">
                               </div>
                           </div>
                           <button class="carousel-control-prev" type="button"
