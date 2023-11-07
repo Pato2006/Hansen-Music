@@ -32,11 +32,12 @@ if ($result) {
 
 require_once "marcas.php";
 require_once "orientaciones.php";
-
+require_once "product.php";
 $response = [
     'brands' => $brands,
     'publications' => $publications,
     'orientations' => $orientations,
+    'products' => $products,
 ];
 header('Content-Type: application/json; charset=utf-8');
 echo json_encode($response);

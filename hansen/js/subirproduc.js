@@ -14,42 +14,9 @@ $(document).ready(function () {
                                 <form action="#" method="POST" id="form_subir">
                                     <section class="subir-producto">
                                         <div class="subir-imagen" id="subirImagenDiv">
-                                            <div id="carouselExampleIndicators" class="carousel slide">
-                                                <div class="carousel-indicators">
-                                                    <button type="button" data-bs-target="#carouselExampleIndicators"
-                                                        data-bs-slide-to="0" class="active" aria-current="true"
-                                                        aria-label="Slide 1"></button>
-                                                    <button type="button" data-bs-target="#carouselExampleIndicators"
-                                                        data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                                    <button type="button" data-bs-target="#carouselExampleIndicators"
-                                                        data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                                </div>
-                                                <div class="car
-                                                ousel-inner">
-                                                    <div class="carousel-item active">
-                                                        <img src="img-svg/plus-lg.svg" class="d-block w-100" alt="Plus Icon" id="img1">
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                        <img src="img-svg/plus-lg.svg" class="d-block w-100" alt="Plus Icon" id="img2">
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                        <img src="img-svg/plus-lg.svg" class="d-block w-100" alt="Plus Icon" id="img3">
-                                                    </div>
-                                                </div>
-                                                <button class="carousel-control-prev" type="button"
-                                                    data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                    <span class="visually-hidden">Previous</span>
-                                                </button>
-                                                <button class="carousel-control-next" type="button"
-                                                    data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                    <span class="visually-hidden">Next</span>
-                                                </button>
-                                            </div>
                                         </div>
                                         <div class="subir-imagen-input mb-3 text-center">
-                                            <input type="file" class="form-control" id="inputGroupFile01">
+                                            <input type="file" class="form-control" name="img_producto" id="inputGroupFile01">
                                         </div>
                                         <div class="eliminar-imagen">
                                             <button type="button" class="btn btn-lg" id="borrar">Borrar imagen actual</button>
@@ -112,6 +79,21 @@ $(document).ready(function () {
                                                 </ul>
                                                 <input type="hidden" name="orientacion_selec" id="orientacion_seleccionado"
                                                     name="orien">
+
+                                                    <div class="input-group">
+                                                <button id="productDropdown" class="btn btn-outline-secondary dropdown-toggle"
+                                                    type="button" data-bs-toggle="dropdown" aria-expanded="false">producto</button>
+                                                <ul class="dropdown-menu">
+                                                `
+                                                $.each(data["products"], function (index, product) {
+
+                                                    str += `<li><a  class="dropdown-item" href="#"onclick="seleccionarOpcion('product', '` + product.id + `')">` + product.name + `</a></li>`
+                                
+                                                });
+                                                str += `</ul>
+                                            
+                                                <input type="hidden" name="produc_selec" id="produc_seleccionado" >
+                                            </div>
                                             </div>
                                         </div>
                                         <div class="subir-ubicacion me-4">
@@ -125,14 +107,6 @@ $(document).ready(function () {
                                                             onclick="seleccionarOpcion('entrega', 'Envio')">Envio</a></li>
                                                 </ul>
                                                 <input type="hidden" name="entrega_selec" id="entrega_seleccionado" name="envio">
-                                            </div>
-                                        </div>
-                                        <div class="subir-envio">
-                                            <div class="input-group input-group-lg mb-3 align-items-center ms-2">
-                                                <section class="rounded">
-                                                    <input type="text" class="form-control form-control-lg w-100"
-                                                        placeholder="Ubicacion(opcional)" id="ubicacion" name="ubicacion">
-                                                </section>
                                             </div>
                                         </div>
                                         <div class="subir-precio">
@@ -162,7 +136,8 @@ $(document).ready(function () {
                         async: false,
                         success: function (asd) {
                             console.log(data);
-                            alert (data)
+                            alert (data);
+
                         }
                     })
                 })
