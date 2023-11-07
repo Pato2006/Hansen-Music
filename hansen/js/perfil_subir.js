@@ -15,6 +15,7 @@ $(document).ready(function () {
         //window.location.href = "index.php";
       },
       error: function (data) {
+        console.log(data)
         alert(data);
       },
     });

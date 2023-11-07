@@ -102,7 +102,7 @@ function bus(marca_id, orientacion_id) {
         str += '<a href="#" class="articulos">';
         str += '<div class="contenido" onclick="clickeado(' + data["publications"][i].id + ')">';
         str += '<div class="foto">';
-        str += '<img src="img/guitarra.jpg" alt="instrumento">';
+        str += '<img src="imagenes/carrusel/guitarra.jpg" alt="instrumento">';
         str += "</div>";
         str += '<div class="descripcion">';
         str += "<h3>" + data["publications"][i].name + "</h1>";
