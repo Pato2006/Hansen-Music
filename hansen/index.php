@@ -105,9 +105,7 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Siguiente</span>
             </a>
-        </main>
-    </div>
-    <div class="logos">
+       <div class="logos">
         <div class="logos-slide">
             <img src="./img-svg/marca1.svg">
             <img src="./img-svg/marca2.svg">
@@ -123,7 +121,10 @@
             <img src="./img-svg/marca4.svg">
             <img src="./img-svg/marca5.svg">
         </div>
+       </div>
+        </main>
     </div>
+    
 </body>
 
 </html>
