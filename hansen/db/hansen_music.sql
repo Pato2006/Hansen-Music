@@ -119,7 +119,7 @@ CREATE TABLE `publications` (
   `product_id` int(8) DEFAULT NULL,
   `name` varchar(50) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `price` int(9) DEFAULT NULL,
+  `price` int(9) DEFAULT '0' NOT NULL CHECK (`price` > 0),
   `state` enum('Nuevo','Usado') DEFAULT NULL,
   `send_id` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
