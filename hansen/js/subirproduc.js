@@ -1,5 +1,29 @@
+
 $(document).ready(function () {
     $("#vende-btn").click(function (e) {
+
+        $.ajax({
+            url: "php/prohibicion.php", // Ruta para verificar la sesión
+            type: "POST",
+            dataType: "json",
+            success: function (secion) {
+                if (secion.estado === "activo") {
+                    // La sesión está activa, continuar con la construcción de la página
+                    hacerPag();
+                } else {
+                    // La sesión no está activa, mostrar un alert
+                    alert("Debes estar logeado para vender un producto");
+                }
+            },
+            error: function () {
+                // Error al verificar la sesión, manejar según sea necesario
+                alert("Debes iniciar secion para vender un producto");
+            }
+        });
+ 
+
+
+        function hacerPag(){
         e.preventDefault()
         $.ajax({
             url: "php/buscado.php",
@@ -13,14 +37,13 @@ $(document).ready(function () {
                             <div class="fondo-contenido d-flex align-items-start justify-content-center">
                                 <form action="#" method="POST" id="form_subir">
                                     <section class="subir-producto">
-                                        <div class="subir-imagen" id="subirImagenDiv">
-                                        </div>
-                                        <div class="subir-imagen-input mb-3 text-center">
-                                            <input type="file" class="form-control" name="img_producto" id="inputGroupFile01">
-                                        </div>
-                                        <div class="eliminar-imagen">
-                                            <button type="button" class="btn btn-lg" id="borrar">Borrar imagen actual</button>
-                                        </div>
+                                            <img id="imagenSeleccionada" class="subir-imagen" src="" alt="Imagen seleccionada">
+                                            <div class="subir-imagen-input mb-3 text-center">
+                                               <input type="file" class="form-control" name="img_producto" id="inputGroupFile01" onchange="Fotopubli()">
+                                            </div>
+                                            <div class="eliminar-imagen">
+                                                <button type="button" class="btn btn-lg" id="borrar" onclick="Borrarimgpubli()">Borrar imagen actual</button>
+                                            </div>
                                         <div class="subir-titulo">
                                             <div class="mb-3 align-items-center">
                                                 <section class="rounded">
@@ -45,14 +68,12 @@ $(document).ready(function () {
                                                 <ul class="dropdown-menu">
                                                     
                                                 `
+                                                 $.each(data["brands"], function (index, brand) {
 
+                                                str += `<li><a  class="dropdown-item" href="#"onclick="seleccionarOpcion('brand', '` + brand.id + `')">` + brand.name + `</a></li>`
 
-                $.each(data["brands"], function (index, brand) {
-
-                    str += `<li><a  class="dropdown-item" href="#"onclick="seleccionarOpcion('brand', '` + brand.id + `')">` + brand.name + `</a></li>`
-
-                });
-                str += `</ul>
+                                                });
+                                                 str += `</ul>
                                                 
                                                 <input type="hidden" name="brand_id" id="brand_seleccionado">
 
@@ -92,21 +113,23 @@ $(document).ready(function () {
                                                 });
                                                 str += `</ul>
                                             
-                                                <input type="hidden" name="produc_selec" id="produc_seleccionado" >
+                                                <input type="hidden" name="product_selec" id="product_seleccionado" >
                                             </div>
                                             </div>
-                                        </div>
-                                        <div class="subir-ubicacion me-4">
+                                        
+                                        
                                             <div class="input-group">
-                                                <button id="entregaDropdown" class="btn btn-outline-secondary dropdown-toggle"
+                                                <button id="sendDropdown" class="btn btn-outline-secondary dropdown-toggle"
                                                     type="button" data-bs-toggle="dropdown" aria-expanded="false">Entrega</button>
                                                 <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="#"
-                                                            onclick="seleccionarOpcion('entrega', 'En casa')">En casa</a></li>
-                                                    <li><a class="dropdown-item" href="#"
-                                                            onclick="seleccionarOpcion('entrega', 'Envio')">Envio</a></li>
-                                                </ul>
-                                                <input type="hidden" name="entrega_selec" id="entrega_seleccionado" name="envio">
+                                                `
+                                                $.each(data["sends"], function (index, send) {
+
+                                                    str += `<li><a  class="dropdown-item" href="#"onclick="seleccionarOpcion('send', '` + send.id + `')">` + send.name + `</a></li>`
+                                
+                                                });
+                                                str += `</ul>
+                                                <input type="hidden" name="send_selec" id="send_seleccionado">
                                             </div>
                                         </div>
                                         <div class="subir-precio">
@@ -126,28 +149,44 @@ $(document).ready(function () {
                         </div>
                         </main>`;
                 $("#contenedor").html(str)
-                $("#subir_prod").click(function () {
-                    var data = $("#form_subir").serializeArray();
+                $("#form_subir").submit(function (event) {
+                    event.preventDefault();
+                    var formData = new FormData(this);
                     $.ajax({
                         url: "php/subir_produc.php",
                         type: "POST",
                         dataType: "text",
-                        data: data,
-                        async: false,
+                        data: formData,
+                        contentType: false,
+                        processData: false,
                         success: function (asd) {
-                            console.log(data);
-                            alert (data);
-
+                            console.log(formData);
+                            alert(asd);
+                            
                         }
-                    })
-                })
-
-            },
-
-        })
+                    });
+                });
+            }
+        });
+    }
     });
-
-
-
 });
+function Fotopubli() {
+    var input = document.getElementById("inputGroupFile01");
+    var imagenSeleccionada = document.getElementById("imagenSeleccionada");
 
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            imagenSeleccionada.src = e.target.result;
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function Borrarimgpubli() {
+    var imagenSeleccionada = document.getElementById("imagenSeleccionada");
+    imagenSeleccionada.src = ""; // Limpia la imagen al hacer clic en "Borrar imagen actual"
+}

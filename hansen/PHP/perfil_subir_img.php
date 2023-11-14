@@ -9,7 +9,6 @@ $temp_imagen = $_FILES['imagen']['tmp_name'];
 
 $sql = "SELECT * FROM users WHERE name = '$name'";
 
-$result = mysqli_query($con, $sql);
 if (mysqli_query($con, $sql)) {
     if (!(strpos($tipo_imagen, 'png') || strpos($tipo_imagen, 'jpg') || strpos($tipo_imagen, 'jpeg'))) {
         echo "La imagen no es .png o .jpg";

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=1, initial-scale=1.0">
+    <link rel="icon" href="./imagenes/icono.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
@@ -12,13 +13,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap-grid">
+    <link rel="stylesheet" href="css/bootstrap-grid.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/keyframe.css">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="shortcut icon" href="imagenes/svg/guitarra.svg" type="image/x-icon">
     <link rel="stylesheet" href="css/cesese.css">
     <link rel="stylesheet" href="css/carrusel.css">
+    <script src="js/editarpubli.js"></script>
     <script src="js/script.js"></script>
     <script src="js/busqueda.js"></script>
     <script src="js/registro.js"></script>
@@ -26,7 +27,6 @@
     <script src="js/perfil.js"></script>
     <script src="js/subirproduc.js"></script>
     <script src="js/perfil_subir.js"></script>
-    <script src="js/Paginador.js"></script>
     <title>Hansen Music</title>
 </head>
 
@@ -40,7 +40,7 @@
             </ul>
         </div>
     </header>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg" id="navbar-zarpado">
         <div class="container">
             <a class="navbar-brand pe-4" href="index.php">
                 <svg class="" width="400" height="64" src="">
@@ -88,13 +88,13 @@
         <main id="carouselExample" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="imagenes/carrusel/carrusel1.png" class="d-block w-100" alt="Imagen 1">
+                    <img src="imagenes/carrusel/carrusel1.webp" class="d-block w-100" alt="Imagen 1">
                 </div>
                 <div class="carousel-item">
-                    <img src="imagenes/carrusel/carrusel2.png" class="d-block w-100" alt="Imagen 2">
+                    <img src="imagenes/carrusel/carrusel2.webp" class="d-block w-100" alt="Imagen 2">
                 </div>
                 <div class="carousel-item">
-                    <img src="imagenes/carrusel/carrusel3.png" class="d-block w-100" style="height: 25%;" alt="Imagen 3">
+                    <img src="imagenes/carrusel/carrusel3.webp" class="d-block w-100" style="height: 25%;" alt="Imagen 3">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">

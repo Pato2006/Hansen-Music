@@ -5061,5 +5061,11 @@
   z-index: 9999;
 }
 
+.contenido {
+
+  background-color: white;
+  margin: 100px;
+}
+
 
 

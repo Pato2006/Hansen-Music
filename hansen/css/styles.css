@@ -1,3 +1,7 @@
+#navbar-zarpado {
+  background-color: #2A2954;
+}
+
 
 .img-menu {
   width: 100%;
@@ -145,10 +149,9 @@ footer {
 footer ul {
   margin-bottom: 0;
 }
-
 .gradient-custom {
   background: #2A2954;
-  background-image: url(".imagenes/svg/jack-connector.svg"), url(".imagenes/svg/electric-guitar.svg"), url(".imagenes/svg/electric-piano.svg");
+  background-image: url("../imagenes/svg/FondoHanse.svg");
   background-repeat: repeat-y;
   background-position: left top, center, right top;
   background-size: auto, auto;
@@ -186,7 +189,7 @@ footer ul {
   height: 20px;
   margin-top: 30px;
   margin-left: 50px;
-  border: 40px;
+  border: 30px;
   border-color: #323232;
   background-color: #323232;
 }
@@ -268,6 +271,7 @@ footer ul {
 
 .contenido {
   display: flex;
+  color:black;
 }
 
 .articulos a {
@@ -302,20 +306,17 @@ h4 {
   margin-top: 25px;
   border: 1px solid;
   border-color: white;
-  font-style: italic;
-  font-size: 22px;
-  overflow: hidden;
-  word-wrap: break-word;
-  /* Rompe palabras largas para forzar el salto de línea */
-}
+  margin:0;
+  font-size: 22px; 
+  margin-top: 30px;}
 
 .articulos .contenido .descripcion h4 {
   background-color: white;
   margin-top: 10px;
   border: 1px solid;
   border-color: white;
-  font-style: italic;
   font-size: 6x;
+  margin:0;
 }
 
 .informacion {
@@ -343,7 +344,7 @@ h4 {
   position: absolute;
   width: 100%;
   height: 100vh;
-  background-color: black;
+  background-color: #212529;
 }
 
 
@@ -388,7 +389,7 @@ h4 {
 
 .perfil-envio {
   display: block;
-  background-color: black;
+  background-color: #212529;
 }
 
 .perfil-envio .envio {
@@ -402,7 +403,7 @@ h4 {
 
 .estado {
   width: auto;
-  background-color: #181818;
+  background-color: #212529;
   display: flex;
   align-items: center;
 }
@@ -483,7 +484,8 @@ label[for="envio"] {
 
 .estado {
   width: auto;
-  background-color: #000000;
+  padding-bottom: 14px;
+  background-color: #212529;
   display: flex;
   align-items: center;
 }
@@ -524,7 +526,7 @@ label[for="envio"] {
   display: flex;
   width: auto;
   height: auto;
-  background-color: black;
+  background-color: #212529;
   margin-top: 80px;
 }
 
@@ -607,7 +609,7 @@ label[for="envio"] {
   position: relative;
   width: 100%;
   height: 100vh;
-  background-color: #000000;
+  background-color: #212529;
 }
 
 .fondo-contenido {
@@ -625,7 +627,7 @@ label[for="envio"] {
 .subir-producto {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(10, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
@@ -828,18 +830,16 @@ input[type="file"] {
   margin-left: 90px;
 }
 
-input[type="text"] {
-  padding: 10px;
-}
 .paginator {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  margin-top: -10%;
+  background-color: #323232;
+  /* margin-top: -10%;
   margin-left: 15%;
   margin-bottom: 2%;
-   /* margin: 15% 12% 0% 0%; */
+   margin: 15% 12% 0% 0%; */
 }
 
 .button-container {
@@ -906,4 +906,80 @@ input[type="text"] {
   background-color: grey;
 }
 
-/*# sourceMappingURL=bootstrap.css.map */
+.mi-tarjeta {
+  background-color: #ffffff; /* Color blanco */
+  padding: 10%; /* 10% de relleno en todos los lados */
+  border-radius: 1rem; /* Redondear las esquinas */
+}
+
+.tarperpro-container {
+  flex: 0 0 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  margin: 10px;
+  background-color: #212529;
+  position: relative;
+}
+
+.tarperpro-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 40px; 
+  width: calc(100% - 70px);
+  height: 4px;
+  background-color: #A5A5A5; 
+}
+
+
+
+.tarperpro {
+  width: 300px;
+  margin: 10px;
+  border: 1px solid #ccc;
+background-color: #1C1C3D;
+  transition: transform 0.3s;
+}
+.tarimg{
+  max-width: 100px;
+  max-height: 100px;
+}
+
+
+.tarperpro-content {
+  padding: 15px;
+}
+
+.tarperpro-title {
+  padding-left: inherit;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #6978BF;
+  margin-bottom: 10px;
+}
+
+.tarperpro-price {
+  padding-left: inherit;
+  font-size: 1.1em;
+  color: green;
+}
+
+.btn-edito{
+  margin-left: 75%;
+  max-width: 3rem;
+  max-height: 3rem;
+  background-image: url(../imagenes/svg/lapiz.svg);
+  background-repeat: no-repeat;
+}
+.btn-elim{
+  background-image:url(../imagenes/svg/basura.svg) ;
+  margin-left: 1%;
+  max-width: 3rem;
+  max-height: 3rem;
+  background-repeat: no-repeat;
+}
+
+/*# sourceMappingURL=bootstrap.css.map */ 
