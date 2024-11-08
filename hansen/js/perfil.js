@@ -10,7 +10,6 @@ $(document).ready(function () {
           alert(data.error);
           return;
         } else {
-          console.log(data)
           str = `
             <main class="fondo-perfil">
                 <section class="perfil-fondo">
@@ -48,13 +47,12 @@ $(document).ready(function () {
               </section>`;
           }
           for (i = 0; i < data.ventas.length; i++) {
-            console.log(data.ventas_img[i])
             str += `
               <div class="tarperpro-container">
               <img class="tarimg" src='imagenes/publicacion/${data.ventas_img[i]}'>
                   <div class="tarperpro-title">${data.ventas[i].name}</div>
                   <button type="button" class="btn btn-edito" id="botonedit" onclick="editarpubli(`+ data.ventas[i].id + `)"><img class="lapizz" src="imagenes/svg/lapiz.svg" alt=""></button>
-                  <button type="button" class="btn btn-elim" id=""><img class="borrer" src="imagenes/svg/basura.svg" alt=""></button>
+                  <button type="button" class="btn btn-elim" id="" onclick="borrarpubli(`+ data.ventas[i].id + `)"><img class="borrer" src="imagenes/svg/basura.svg" alt=""></button>
           </div>
             `
           }

@@ -3,7 +3,7 @@ require_once("env.php");
 
 // Obtener información del archivo
 $nombre_archivo = $_FILES['img_producto']['name'];
-$tipo_imagen = $_FILES['img_producto']['type'];
+$tipo_archivo = $_FILES['img_producto']['type'];
 $tamaño_archivo = $_FILES['img_producto']['size'];
 $archivo_temporal = $_FILES['img_producto']['tmp_name'];
 
@@ -15,10 +15,8 @@ $id = $id_row['id'];
 
 if ($id_result) {
     // Validar el tipo de archivo
-    if (!(strpos($tipo_imagen, 'png') || strpos($tipo_imagen, 'jpg') || strpos($tipo_imagen, 'jpeg'))) {
-        echo "La imagen no es .png, .jpg o .jpeg";
+    
 
-    } else {
         $directorio_destino = '../imagenes/publicacion/';
         $ruta_imagen = $directorio_destino . $id . ".png";
 
@@ -30,7 +28,7 @@ if ($id_result) {
             echo "Ocurrió algún error al subir el fichero. No pudo guardarse.";
         }
     }
-} else {
+ else {
     echo "Error al obtener el ID de la última publicación.";
 }
 ?>

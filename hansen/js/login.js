@@ -20,15 +20,15 @@ $(document).ready(function () {
                         <input type="email" id="typeEmailX" class="form-control form-control-lg" style="width: 100%;" name="user" />
                       </div>
                       <div class="form-outline form-white mb-4 text-center">
-                        <p id="cambio1" class="form-label santiaguin" for="typePasswordX">Contraseña</p>
+                        <p id="cambio1" class="form-label santiaguinñ" for="typePasswordX">Contraseña</p>
                         <input type="password" id="typePasswordX" class="form-control form-control-lg" style="width: 100%;" name="password" />
                       </div>
-                      <button class="btn btn-outline btn-lg px-5 ms-2" type="button" id="login">Iniciar sesión</button>
+                      <button class="btn-outline btn-lg px-5 ms-2" type="button" id="login">Iniciar sesión</button>
                     </form>
                   </div>
                   <div>
                     <p class="mb-0">¿No tienes una cuenta?
-                      <a href="#" class="text-white-50 fw-bold" id=register>Regístrate</a>
+                      <a href="#" class="text-white-50 fw-bold" id=register onclick="registrarse()">Regístrate</a>
                     </p>
                   </div>
                 </div>

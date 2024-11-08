@@ -11,42 +11,65 @@ $page = isset($_POST['page']) ? $_POST['page'] : 1;
 $publicationsPerPage = 6;
 $offset = ($page - 1) * $publicationsPerPage;
 
-
+// Consulta SQL con consultas preparadas
 $sql = "SELECT publications.name, publications.state, publications.price, publications.id, products.name AS product, orientations.name AS orientation, brands.name AS brand
     FROM publications
     INNER JOIN products ON publications.product_id = products.id
     INNER JOIN brands ON products.brand_id = brands.id
     INNER JOIN orientations ON products.orientation_id = orientations.id
-    WHERE publications.name LIKE '%" . $texto . "%'";
+    WHERE publications.name LIKE ?";
+
+$params = array("%$texto%");
 
 if (!empty($marca)) {
-    $sql .= " AND brands.id = '$marca'";
+    $sql .= " AND brands.id = ?";
+    $params[] = $marca;
 }
 
 if (!empty($from) && !empty($to)) {
-    $sql .= " AND publications.price BETWEEN '$from' AND '$to'";
+    $sql .= " AND publications.price BETWEEN ? AND ?";
+    $params[] = $from;
+    $params[] = $to;
 } else if (!empty($from) && empty($to)) {
-    $sql .= " AND publications.price >= '$from'";
+    $sql .= " AND publications.price >= ?";
+    $params[] = $from;
 }
 
 if (!empty($orientacion)) {
-    $sql .= " AND orientations.id = '$orientacion'";
+    $sql .= " AND orientations.id = ?";
+    $params[] = $orientacion;
 }
 
 if (!empty($estado)) {
-    $sql .= " AND publications.state = '$estado'";
+    $sql .= " AND publications.state = ?";
+    $params[] = $estado;
 }
 
-$sql .= " LIMIT $offset, $publicationsPerPage";
+$sql .= " LIMIT ?, ?";
+$params[] = $offset;
+$params[] = $publicationsPerPage;
 
-$result = mysqli_query($con, $sql);
+//Prepara la consulta
+$stmt = mysqli_prepare($con, $sql);
+if ($stmt === false) {
+    die("Error en la preparación de la consulta: " . mysqli_error($con));
+}
+
+//Vincular parámetros
+$types = str_repeat('s', count($params)); // 's' para cada parámetro, ajustar si es necesario
+mysqli_stmt_bind_param($stmt, $types, ...$params);
+
+
+$result = mysqli_stmt_execute($stmt);
 
 if (!$result) {
     die("Error en la consulta principal: " . mysqli_error($con));
 }
 
+$resultSet = mysqli_stmt_get_result($stmt);
+
 $publications = array();
-while ($row = mysqli_fetch_assoc($result)) {
+while ($row = mysqli_fetch_assoc($resultSet)) {
     $publications[] = $row;
 }
 
@@ -65,6 +88,8 @@ $response = [
     'sends' => $sends,
     'registros' => $totalCount,
     'totalpages' => ceil($totalCount / $publicationsPerPage),
+    'from' => $from,
+    'to' => $to
 ];
 
 header('Content-Type: application/json; charset=utf-8');

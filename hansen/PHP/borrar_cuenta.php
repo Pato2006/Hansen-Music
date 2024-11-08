@@ -20,7 +20,7 @@ try {
         } else {
         }
     } else {
-        $data[] =  "Algo salió mal o realizaste una compra";
+        $data[] =  "Algo salió mal, puede ser que realizaste una compra o tengas una publicacion activa";
     }
 } catch (mysqli_sql_exception $e) {
     $data[] = "Error al borrar la cuenta, pobablemente tengas una publicacion activa o hayas comprado un producto";

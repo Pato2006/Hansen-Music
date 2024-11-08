@@ -8,15 +8,23 @@ $(document).ready(function () {
   currentPage = 1;
   maxpag = 20;
   historyStack = [];
+  UltimaMarca = ""
+  UltimoEstado = ""
+  UltimaOrientacion = ""
 
   renderButtons();
 
   $(document).on('click', '.boton.estado', function () {
     currentPage = 1;
-    estado = $(this).text();
+    if (UltimoEstado == $(this).text()) {
+      estado = "";
+    } else {
+      estado = $(this).text();
+    }
+    UltimoEstado = estado;
     alert(estado);
-    bus(marca_id, orientacion_id, estado, from, to)
-  })
+    bus(marca_id, orientacion_id, estado, from, to);
+  });
 
   $(document).on('click', '.enviar.precio', function () {
     currentPage = 1;
@@ -39,14 +47,26 @@ $(document).ready(function () {
 
   $(document).on('click', '.boton.marca', function () {
     currentPage = 1;
-    marca_id = $(this).attr("id");
+    if (UltimaMarca == $(this).attr("id")) {
+      marca_id = ""
+    }
+    else {
+      marca_id = $(this).attr("id");
+    }
+    UltimaMarca = marca_id
     alert(marca_id);
     bus(marca_id, orientacion_id, estado, from, to)
   })
 
   $(document).on('click', '.boton.orientacion', function () {
     currentPage = 1;
-    orientacion_id = $(this).attr("id");
+    if (UltimaOrientacion == $(this).attr("id")) {
+      orientacion_id = ""
+    }
+    else {
+      orientacion_id = $(this).attr("id");
+    }
+    UltimaOrientacion = orientacion_id
     alert(orientacion_id);
     bus(marca_id, orientacion_id, estado, from, to)
   })
@@ -105,9 +125,14 @@ function bus(marca_id, orientacion_id, estado, from, to) {
                     <input type="text" class="text" placeholder="Marca" disabled id="marca">
             
                     `
-
+      marca_creado = false
       $.each(data["brands"], function (index, brands) {
-        str += '<button id=' + brands.id + ' class="boton marca">' + brands.name + '</button>';
+        if (marca_id == brands.id && !marca_creado) {
+          str += '<button id=' + brands.id + ' class="boton marca boton-seleccionado">' + brands.name + '</button>';
+          marca_creado = true
+        } else {
+          str += '<button id=' + brands.id + ' class="boton marca">' + brands.name + '</button>';
+        }
       });
 
 
@@ -115,26 +140,43 @@ function bus(marca_id, orientacion_id, estado, from, to) {
       str += ` </div>
                 <div class="Orientacion">
                     <input type="text" class="iten" placeholder="Orientacion" disabled id="orientacion">
-                    <button id="1" class="boton orientacion">Diestro</button>
-                    <button id="2" class="boton orientacion">Zurdo</button>
-                    <button id="3" class="boton orientacion">Ambidiestro</button>    
-                </div>
+                   `
+      orientacion_creado = false
+      $.each(data["orientations"], function (index, orientations) {
+        if (orientacion_id == orientations.id && !orientacion_creado) {
+          str += '<button id=' + orientations.id + ' class="boton orientacion boton-seleccionado">' + orientations.name + '</button>';
+          orientacion_creado = true
+        } else {
+          str += '<button id=' + orientations.id + ' class="boton orientacion">' + orientations.name + '</button>';
+        }
+      });
+      str += `</div>
                 <div class="Estado">
-                    <input type="text" class="iten" placeholder="Estado" disabled id="condicion">
-                    <button class="boton estado">Nuevo</button>
-                    <button class="boton estado">Usado</button>    
-                </div>
+                    <input type="text" class="iten" placeholder="Estado" disabled id="condicion">`
+      if (UltimoEstado == "Nuevo") {
+        str += ` <button class="boton estado boton-seleccionado">Nuevo</button>`
+        str += `<button class="boton estado">Usado</button>`
+      }
+      else if (UltimoEstado == "Usado") {
+        str += ` <button class="boton estado">Nuevo</button>`
+        str += `<button class="boton estado boton-seleccionado">Usado</button>`
+      }
+      else {
+        str += ` <button class="boton estado">Nuevo</button>`
+        str += `<button class="boton estado">Usado</button>`
+      }
+      str += ` </div>
                 <div class="Dinero">
                     <input type="text" class="iten" placeholder="Precio" disabled id="precio">
-                    <button from="0" to="1000" class="boton precio">Hasta $1000</button>
+                    <button from="1" to="1000" class="boton precio">Hasta $1000</button>
                     <button from="500" to="1000" class="boton precio">entre $500 y $1000</button>
                     <button from="1000" to=""  class="boton precio" id="plata_entre">Más de $1000</button>    
                 </div>
                 <div class="precio-producto">
-                    <input type="number" id="desde" class="precio-boton" placeholder="">
+                    <input type="number" id="desde" class="precio-boton" placeholder="${data.from}" min="1">
                     <div class="precio-espacio"></div>
-                    <input type="number" id="hasta" class="precio-boton m-0" placeholder="">
-                    <button type="button" class="enviar precio"><img src="imagenes/svg/box-arrow-in-right.svg" alt="Precio"></button>
+                      <input type="number" id="hasta" class="precio-boton m-0" placeholder="${data.to}" min="1">
+                      <button type="button" onclick="validarInputs()" class="enviar precio"><img src="imagenes/svg/box-arrow-in-right.svg" alt="Precio"></button>
                 </div>
             </div>
             `;
@@ -203,8 +245,9 @@ function clickeado(id) {
     url: "php/clickeado.php",
     type: "POST",
     dataType: "json",
-    data: { id: id,
-     },
+    data: {
+      id: id,
+    },
     async: false,
     success: function (data) {
       console.log(data)
@@ -221,14 +264,14 @@ function clickeado(id) {
                       <div class="mb-3 align-items-center">
                           <section class="rounded">
                               <h1>` + data[0].name + `</h1>
+                              <p>`+ data[0].seller + `</p>
+                              <img class="romeror" src="imagenes/perfil/`+ data[0].seller + `.png">
                               <h2>$`+ data[0].price + `</h2>
                               <p>Tipo de entrega: `+ data[0].sends + `</p>
                               <p>Descripcion: `+ data[0].description + `</p>
                               <p>Estado: `+ data[0].state + `</p>
                               <p>Orientacion: `+ data[0].orientation + `</p>
                               <p>Producto: `+ data[0].product + `</p>
-                              <p>Vendedor: `+ data[0].seller + `</p>
-
                           </section>
                       </div>
                   </div>
@@ -252,11 +295,11 @@ function clickeado(id) {
   </main>`;
 
       $("#contenedor").html(str);
-      for(i = 0; i < data.imagenes.length; i++){
+      for (i = 0; i < data.imagenes.length; i++) {
         if (data[0].id + '.png' == data.imagenes[i]) {
-          var imageUrl = 'imagenes/publicacion/' + data.imagenes[i]; 
+          var imageUrl = 'imagenes/publicacion/' + data.imagenes[i];
           $("#img1").attr("src", imageUrl);
-        }  
+        }
       }
 
 
@@ -270,7 +313,6 @@ function clickeado(id) {
           success: function (data) {
             if (data.message) {
               alert(data.message);
-              window.location.href = "index.php";
             } else if (data.error) {
               alert("Error: " + data.error);
             }
@@ -289,11 +331,30 @@ function renderButtons() {
 
   buttonsHTML = '';
 
+  // Primer boton
   if (currentPage !== 2 && currentPage !== 0 && currentPage !== 1) {
     buttonsHTML += `<button id="1" onclick="changePage(1)">1</button>`;
   }
-
   // Botón anterior al currentPage
+  antB()
+  // Boton actual (currentPage)
+  actB()
+  // Boton siguiente al currentPage
+  sigB()
+
+  // Último botón
+  if (maxpag !== 2 && currentPage !== maxpag - 1 && currentPage !== maxpag && maxpag != 0 && maxpag != 3) {
+    buttonsHTML += `<button id="${maxpag}" onclick="changePage(${maxpag})">${maxpag}</button>`
+  }
+
+
+  return buttonsHTML
+
+  console.log(currentPage)
+}
+
+// Botón anterior al currentPage
+function antB() {
   if (currentPage > 1 && maxpag > 2 && maxpag > 3 && currentPage != maxpag && currentPage != maxpag - 1 && maxpag > 1) {
     buttonsHTML += `<button id="${currentPage - 1}" onclick="changePage(${currentPage - 1})">${currentPage - 1}</button>`;
   }
@@ -310,6 +371,18 @@ function renderButtons() {
       buttonsHTML += `<button id="${currentPage - 1}" onclick="changePage(${currentPage - 1})">${currentPage - 1}</button>`
     }
   }
+  else if (maxpag == 4) {
+    if (currentPage == 4) {
+      buttonsHTML += `<button id="${currentPage - 2}" onclick="changePage(${currentPage - 2})">${currentPage - 2}</button>`;
+      buttonsHTML += `<button id="${currentPage - 1}" onclick="changePage(${currentPage - 1})">${currentPage - 1}</button>`;
+    }
+    if (currentPage == 3) {
+      buttonsHTML += `<button id="${currentPage - 1}" onclick="changePage(${currentPage - 1})">${currentPage - 1}</button>`
+    }
+    else if (currentPage == 2) {
+      buttonsHTML += `<button id="${currentPage - 1}" onclick="changePage(${currentPage - 1})">${currentPage - 1}</button>`
+    }
+  }
   else if (currentPage == maxpag - 1) {
     buttonsHTML += `<button id="${currentPage - 2}" onclick="changePage(${currentPage - 2})">${currentPage - 2}</button>`;
     buttonsHTML += `<button id="${currentPage - 1}" onclick="changePage(${currentPage - 1})">${currentPage - 1}</button>`;
@@ -319,17 +392,19 @@ function renderButtons() {
     buttonsHTML += `<button id="${currentPage - 2}" onclick="changePage(${currentPage - 2})">${currentPage - 2}</button>`;
     buttonsHTML += `<button id="${currentPage - 1}" onclick="changePage(${currentPage - 1})">${currentPage - 1}</button>`;
   }
-
-  // Botón actual (currentPage)
+}
+// Botón actual (currentPage)
+function actB() {
   buttonsHTML += `<button id="${currentPage}" onclick="changePage(${currentPage})">${currentPage}</button>`
-
-  // Botón siguiente al currentPage
-  if (currentPage < maxpag && maxpag > 2 && maxpag > 3 && maxpag > 1) {
+}
+// Botón siguiente al currentPage
+function sigB() {
+  if (currentPage < maxpag && maxpag > 2 && maxpag > 3 && maxpag > 1 && maxpag > 4) {
     if (currentPage != 2 && currentPage != 1) {
       buttonsHTML += `<button id="${currentPage + 1}" onclick="changePage(${currentPage + 1})">${currentPage + 1}</button>`
     }
     else {
-      if (currentPage == 1 && maxpag != 1) {
+      if (currentPage == 1 && maxpag != 1 && maxpag != 4) {
         buttonsHTML += `<button id="${currentPage + 1}" onclick="changePage(${currentPage + 1})">${currentPage + 1}</button>`
         buttonsHTML += `<button id="${currentPage + 2}" onclick="changePage(${currentPage + 2})">${currentPage + 2}</button>`
         buttonsHTML += `<button id="${currentPage + 3}" onclick="changePage(${currentPage + 3})">${currentPage + 3}</button>`
@@ -354,18 +429,19 @@ function renderButtons() {
       buttonsHTML += `<button id="${currentPage + 1}" onclick="changePage(${currentPage + 1})">${currentPage + 1}</button>`
     }
   }
+  else if (maxpag == 4) {
+    if (currentPage == 1) {
+      buttonsHTML += `<button id="${currentPage + 1}" onclick="changePage(${currentPage + 1})">${currentPage + 1}</button>`
+      buttonsHTML += `<button id="${currentPage + 2}" onclick="changePage(${currentPage + 2})">${currentPage + 2}</button>`
+    }
+    else if (currentPage == 2) {
+      buttonsHTML += `<button id="${currentPage + 1}" onclick="changePage(${currentPage + 1})">${currentPage + 1}</button>`
+    }
+    else if (currentPage == 3) {
+      buttonsHTML += `<button id="${currentPage + 1}" onclick="changePage(${currentPage + 1})">${currentPage + 1}</button>`
+    }
 
-
-
-  // Último botón, excepto cuando maxpag es 2 o currentPage es maxpag - 1 o maxpag
-  if (maxpag !== 2 && currentPage !== maxpag - 1 && currentPage !== maxpag && maxpag != 0 && maxpag != 3) {
-    buttonsHTML += `<button id="${maxpag}" onclick="changePage(${maxpag})">${maxpag}</button>`
   }
-
-
-  return buttonsHTML
-
-  console.log(currentPage)
 }
 
 function updatemaxpag(totalpages) {
@@ -399,4 +475,19 @@ function previousPage() {
   }
   bus(marca_id, orientacion_id, estado, from, to)
   console.log(currentPage)
+}
+
+//Correccion al ingresar 0 en el filtrado por precio manual
+function validarInputs() {
+  var desdeInput = document.getElementById('desde');
+  var hastaInput = document.getElementById('hasta');
+
+  if (desdeInput.value == 0) {
+    desdeInput.value = '1';
+  }
+
+  if (hastaInput.value == 0) {
+    hastaInput.value = '1';
+  }
+
 }

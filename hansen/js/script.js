@@ -1,27 +1,18 @@
 $(document).ready(function () {
-    $("#buy").click(function () {
-        $(".recuadro").toggleClass("active");
-        $(".carousel-control-next-icon").hide();
-    })
-    $("#close").click(function () {
-        $(".recuadro").toggleClass("active");
-        $(".carousel-control-next-icon").show();
-    })
-
-    // Productos Imagenes
-    var currentImageIndex = 0;
-    var carouselImages = $('.carousel-item img');
-    $('#inputGroupFile01').change(function () {
-        if (currentImageIndex < carouselImages.length) {
-            var currentImage = carouselImages.eq(currentImageIndex);
-            var file = this.files[0];
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                currentImage.attr('src', e.target.result);
-                currentImageIndex++;
-            };
-            reader.readAsDataURL(file);
+    $.ajax({
+        url: "PHP/imagen_index.php",
+        type: "POST",
+        dataType: "json",
+        async: false,
+        success: function (data) {
+            if (data.imagen.length <= 0) {
+                $("#person_img").attr("src", "imagenes/svg/person-check.svg");
+            }
+            else {
+                $("#person_img").attr("src", "imagenes/perfil/" + data.imagen[0]);
+            }
+        },
+        error: function (error) {
         }
     });
     // Productos borrar imagenes
@@ -34,11 +25,14 @@ $(document).ready(function () {
         }
     });
 })
-// Elegir Opcion Input 
-function seleccionarOpcion(categoria, opcion) {
-    dropdown = document.getElementById(`${categoria}Dropdown`);
-    input = document.getElementById(`${categoria}_seleccionado`);
 
-    dropdown.innerHTML = opcion;
-    input.value = opcion;
+// Elegir Opcion Input 
+function seleccionarOpcion(categoria, opcion_input, opcion_mostrar) {
+    var dropdown = document.getElementById(`${categoria}Dropdown`);
+    var input = document.getElementById(`${categoria}_seleccionado`);
+
+    dropdown.innerHTML = opcion_mostrar;
+    input.value = opcion_input;
+
+    // Agrega una condición para manejar el tipo (en este caso, la marca)
 }

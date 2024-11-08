@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-11-2023 a las 20:24:09
+-- Tiempo de generación: 20-11-2023 a las 18:25:13
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -39,7 +39,8 @@ CREATE TABLE `brands` (
 INSERT INTO `brands` (`id`, `name`) VALUES
 (1, 'Martin'),
 (2, 'Gibson'),
-(3, 'Takamine');
+(3, 'Takamine'),
+(4, 'Yamaha');
 
 -- --------------------------------------------------------
 
@@ -54,16 +55,6 @@ CREATE TABLE `buys` (
   `status_id` int(8) DEFAULT NULL,
   `purchase_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `buys`
---
-
-INSERT INTO `buys` (`id`, `user_buyer_id`, `publication_id`, `status_id`, `purchase_date`) VALUES
-(1, 3, 25, 2, '2023-11-07 14:25:23'),
-(2, 3, 21, 3, '2023-11-07 14:49:19'),
-(3, 3, 24, 2, '2023-11-07 15:37:42'),
-(4, 3, 22, 1, '2023-11-07 16:33:04');
 
 -- --------------------------------------------------------
 
@@ -105,7 +96,8 @@ CREATE TABLE `products` (
 INSERT INTO `products` (`id`, `name`, `brand_id`, `orientation_id`) VALUES
 (1, 'Firebird X', 2, 2),
 (2, 'Alhambra AJ-CR E9', 1, 1),
-(3, 'GD30CE-12', 3, 1);
+(3, 'GD30CE-12', 3, 1),
+(4, 'YRS23', 4, 3);
 
 -- --------------------------------------------------------
 
@@ -119,7 +111,7 @@ CREATE TABLE `publications` (
   `product_id` int(8) DEFAULT NULL,
   `name` varchar(50) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `price` int(9) DEFAULT '0' NOT NULL CHECK (`price` > 0),
+  `price` int(9) NOT NULL DEFAULT 0 CHECK (`price` > 0),
   `state` enum('Nuevo','Usado') DEFAULT NULL,
   `send_id` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -129,13 +121,21 @@ CREATE TABLE `publications` (
 --
 
 INSERT INTO `publications` (`id`, `seller_id`, `product_id`, `name`, `description`, `price`, `state`, `send_id`) VALUES
-(19, 3, 2, 'Guitarra Acústica', 'HOLAAA', 500, 'Nuevo', 1),
-(20, 3, 2, 'Teclado Eléctrico', '', 750, 'Usado', 1),
-(21, 3, 2, 'Batería Electrónica', '', 1000, 'Nuevo', 1),
-(22, 3, 2, 'Bajo Eléctrico', '', 600, 'Nuevo', 1),
-(23, 3, 2, 'Saxofón Tenor', '', 800, 'Nuevo', 1),
-(24, 3, 2, 'Trompeta', '', 550, 'Usado', 1),
-(25, 3, 2, 'Guitarra zurda', '', 12000, 'Nuevo', 1);
+(1, 1, 3, 'Guitarra Verde', 'Suena bien', 2500, 'Nuevo', 1),
+(2, 1, 1, 'Guitarra Roja', 'Suena hermosa', 1500, 'Usado', 2),
+(3, 1, 2, 'Guitarra azul', 'casi nueva', 250, 'Usado', 2),
+(4, 1, 2, 'Guitarra naranja', 'casi nueva', 5000, 'Nuevo', 2),
+(5, 1, 1, 'Bombo genial', 'era de mi hermano pero bueno', 500, 'Nuevo', 2),
+(6, 1, 3, 'Bombo malo', 'lo compre lo vendo', 1250, 'Nuevo', 1),
+(7, 2, 2, 'Teclado', 'suena', 4000, 'Usado', 1),
+(8, 2, 3, 'Teclado sarpado', 'Está buenisimo', 10000, 'Nuevo', 2),
+(9, 2, 1, 'Bajo electrico', 'asi como esta lo vendo', 200, 'Nuevo', 2),
+(10, 2, 2, 'Bajo no anda', 'no anda', 1, 'Nuevo', 2),
+(11, 2, 4, 'Flauta amarilla', 'la use bastante', 700, 'Usado', 1),
+(12, 2, 4, 'Flauta roja', 'la use poquisimo', 800, 'Nuevo', 2),
+(13, 2, 4, 'Flauta no suena', 'remato', 500, 'Usado', 2),
+(14, 2, 4, 'Flauta nueva!', 'Hermosa para empezar', 9000, 'Nuevo', 1),
+(15, 2, 1, 'Guitarra rota', 'no anda, remato', 50, 'Usado', 1);
 
 -- --------------------------------------------------------
 
@@ -195,8 +195,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `password`, `mail`, `location`) VALUES
-(3, 'Pato', '$2y$10$NO6KSpMSWRK0KG8RO.Wcee7aVxorO0lsnPCzJui5Ydf2w89J8ds2C', 'Pato@gmail.com', 'ASDSAD'),
-(4, 'ASD', '$2y$10$zZqEYBejNlK0Ye5JfNNSweC323i7B4.SbU7w/VfoaeH0YNka/8X86', 'ASD@gmail.com', NULL);
+(1, 'Patricio2006', '$2y$10$ySouv9NGS6lsaTDmAqs6JuoWl.Z5vaUQlACfmsHCXDzAjqk9r3uEe', 'pato1@gmail.com', 'Av. Lacarra 3980'),
+(2, 'SantiRomeo', '$2y$10$/0SesuJ1GKtNdc1dhHYJduyXTK39uVxY8Yfs9033k3Pm5E0Mz46za', 'santi1@hotmail.com', 'Cap. García Cuerva 3950');
 
 --
 -- Índices para tablas volcadas
@@ -266,13 +266,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `buys`
 --
 ALTER TABLE `buys`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `orientations`
@@ -284,19 +284,19 @@ ALTER TABLE `orientations`
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `publications`
 --
 ALTER TABLE `publications`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `sends`
 --
 ALTER TABLE `sends`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `status`
@@ -308,7 +308,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas

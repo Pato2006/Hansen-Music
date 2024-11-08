@@ -149,6 +149,7 @@ footer {
 footer ul {
   margin-bottom: 0;
 }
+
 .gradient-custom {
   background: #2A2954;
   background-image: url("../imagenes/svg/FondoHanse.svg");
@@ -196,7 +197,7 @@ footer ul {
 
 .products .filtro .boton {
   display: block;
-  width: 500px;
+  width: 150px;
   height: 25px;
   margin-left: 60px;
   text-align: left;
@@ -271,7 +272,7 @@ footer ul {
 
 .contenido {
   display: flex;
-  color:black;
+  color: black;
 }
 
 .articulos a {
@@ -306,9 +307,10 @@ h4 {
   margin-top: 25px;
   border: 1px solid;
   border-color: white;
-  margin:0;
-  font-size: 22px; 
-  margin-top: 30px;}
+  margin: 0;
+  font-size: 22px;
+  margin-top: 30px;
+}
 
 .articulos .contenido .descripcion h4 {
   background-color: white;
@@ -316,7 +318,7 @@ h4 {
   border: 1px solid;
   border-color: white;
   font-size: 6x;
-  margin:0;
+  margin: 0;
 }
 
 .informacion {
@@ -644,14 +646,18 @@ label[for="envio"] {
 }
 
 .subir-imagen-input {
-  grid-area: 8 / 1 / 9 / 4;
+  grid-area: 9 / 1 / 9 / 4;
   margin-left: 250px;
+  margin-top: -10%;
+
 }
 
 .eliminar-imagen {
-  grid-area: 9 / 2 / 10 / 6;
-  margin-left: 20px;
-  
+  grid-area: 9 / 3 / 10 / 6;
+  margin-left: -2%;
+  margin-top: 5%;
+  margin-bottom: 10%;
+
 }
 
 .subir-titulo {
@@ -666,7 +672,7 @@ label[for="envio"] {
 
 .subir-filtros {
   grid-area: 4 / 6 / 4 / 10;
-  margin-left: 20px;
+  margin-left: 1px;
   display: flex;
 }
 
@@ -685,21 +691,34 @@ label[for="envio"] {
 }
 
 .subir-boton {
-  grid-area: 7 / 6 / 8 / 8;
+  grid-area: 8 / 6 / 8 / 8;
   margin-left: 20px;
+  margin-top: 20%;
 }
 
 .subir-boton button {
   border-radius: 200px;
   background-color: #1C1C3D;
-  border: #1C1C3D;
   color: white;
   padding: 20px;
 }
 
-.subir-boton button:hover {
+.subir_boto {
+  background-color: #1C1C3D;
+  border: #1C1C3D;
   color: white;
+  padding: 6px;
+  width: 150%;
+  border-radius: 50px;
+
 }
+
+.subir-boto button:hover {
+  color: white;
+  background-color: #1C1C3D;
+}
+
+
 
 input[type="file"] {
   border: 1px solid #ccc;
@@ -712,87 +731,95 @@ input[type="file"] {
 
 
 /* Estilo para centrar los inputs de texto */
-.tit{
+.tit {
   position: relative;
   margin-left: 16%;
   display: flex;
-  margin: 13px 0px 10px 29% ;
+  margin: 13px 0px 10px 29%;
 }
-.tar{
+
+.tar {
   border: rgb(208, 207, 207);
   border-radius: 20px;
   height: 50px;
   width: 360px;
   position: relative;
   display: flex;
-  margin: 10px 35% 10px 35% ;
+  margin: 10px 35% 10px 35%;
   max-width: 50%;
   max-width: 50%;
 }
-.tar2{
-  border:rgb(208, 207, 207);
+
+.tar2 {
+  border: rgb(208, 207, 207);
   border-radius: 20px;
   height: 50px;
   width: 360px;
   position: relative;
   display: flex;
-  margin: 13px 35% 10px 35% ;
+  margin: 13px 35% 10px 35%;
   max-width: 50%;
 }
-.tar3{
-  border:rgb(208, 207, 207);
+
+.tar3 {
+  border: rgb(208, 207, 207);
   border-radius: 20px;
   height: 50px;
   width: 140px;
   position: relative;
   display: flex;
-  margin: 13px 35% 10px 35% ;
+  margin: 13px 35% 10px 35%;
   max-width: 50%;
 }
-.tar4{
-  border:rgb(208, 207, 207);
+
+.tar4 {
+  border: rgb(208, 207, 207);
   border-radius: 20px;
   height: 50px;
   width: 200px;
   position: relative;
   text-align: justify;
   display: flex;
-  margin: 13px 35% 10px 35% ;
+  margin: 13px 35% 10px 35%;
   max-width: 50%;
 }
-.tar5{
-  border:rgb(208, 207, 207);
+
+.tar5 {
+  border: rgb(208, 207, 207);
   border-radius: 20px;
   height: 50px;
   width: 360px;
   position: relative;
   display: flex;
-  margin: 13px 35% 10px 35% ;
+  margin: 13px 35% 10px 35%;
   max-width: 50%;
 }
-.tar6{
-  border:rgb(208, 207, 207);
+
+.tar6 {
+  border: rgb(208, 207, 207);
   border-radius: 20px;
   height: 50px;
   width: 80px;
   position: relative;
   display: flex;
-  margin: 13px 35% 10px 35% ;
+  margin: 13px 35% 10px 35%;
   max-width: 50%;
 }
-.tar7{
-    height: 80px;
-    width: 200px;
-    position: relative;
-    border-radius: 200px;
-    background-color: #8ca0ff;
-    border: #8ca0ff;
-    color: white;
-    display: flex;
-    margin: 13px 35% 10px 35% ;
-    max-width: 50%;
+
+.tar7 {
+  height: 80px;
+  width: 200px;
+  position: relative;
+  border-radius: 200px;
+  background-color: #8ca0ff;
+  border: #8ca0ff;
+  color: white;
+  display: flex;
+  margin: 13px 35% 10px 35%;
+  max-width: 50%;
 }
-.tar8{
+
+.tar8 {
   height: 80px;
   width: 200px;
   position: relative;
@@ -801,26 +828,28 @@ input[type="file"] {
   border: #1C1C3D;
   color: white;
   display: flex;
-  margin: 13px 0px 10px 40% ;
+  margin: 13px 0px 10px 40%;
 }
-.tar9{
-  border:rgb(208, 207, 207);
+
+.tar9 {
+  border: rgb(208, 207, 207);
   border-radius: 20px;
   height: 50px;
   width: 360px;
   position: relative;
-  margin: 13px 35% 10px 35% ;
+  margin: 13px 35% 10px 35%;
   max-width: 50%;
   display: flex;
 }
-.tar10{
-  border:rgb(208, 207, 207);
+
+.tar10 {
+  border: rgb(208, 207, 207);
   border-radius: 20px;
   height: 50px;
   width: 360px;
   position: relative;
   display: flex;
-  margin: 13px 35% 10px 35% ;
+  margin: 13px 35% 10px 35%;
   max-width: 50%;
 }
 
@@ -847,7 +876,7 @@ input[type="file"] {
 }
 
 .paginator button {
-  padding: 1vw; 
+  padding: 1vw;
   margin: 0 5px;
   background-color: #2A2954;
   color: white;
@@ -881,25 +910,26 @@ input[type="file"] {
 
 
 
-#pipi{
+#pipi {
   color: white;
   margin-left: 270px;
   margin-right: 270px;
   height: 15px;
 }
-#lol{
+
+#lol {
   height: 77px;
   width: 450px;
 }
 
-#sos{
+#sos {
   margin-top: 50px;
   height: 60px;
   width: 300px;
 }
 
 #penoso {
-  color:#2A2954;
+  color: #2A2954;
 }
 
 #sosas {
@@ -907,9 +937,12 @@ input[type="file"] {
 }
 
 .mi-tarjeta {
-  background-color: #ffffff; /* Color blanco */
-  padding: 10%; /* 10% de relleno en todos los lados */
-  border-radius: 1rem; /* Redondear las esquinas */
+  background-color: #ffffff;
+  /* Color blanco */
+  padding: 10%;
+  /* 10% de relleno en todos los lados */
+  border-radius: 1rem;
+  /* Redondear las esquinas */
 }
 
 .tarperpro-container {
@@ -928,10 +961,10 @@ input[type="file"] {
   content: '';
   position: absolute;
   top: 0;
-  left: 40px; 
+  left: 40px;
   width: calc(100% - 70px);
   height: 4px;
-  background-color: #A5A5A5; 
+  background-color: #A5A5A5;
 }
 
 
@@ -940,10 +973,11 @@ input[type="file"] {
   width: 300px;
   margin: 10px;
   border: 1px solid #ccc;
-background-color: #1C1C3D;
+  background-color: #1C1C3D;
   transition: transform 0.3s;
 }
-.tarimg{
+
+.tarimg {
   max-width: 100px;
   max-height: 100px;
 }
@@ -967,19 +1001,205 @@ background-color: #1C1C3D;
   color: green;
 }
 
-.btn-edito{
-  margin-left: 75%;
+.btn-edito {
+  margin-left: 90%;
   max-width: 3rem;
   max-height: 3rem;
   background-image: url(../imagenes/svg/lapiz.svg);
   background-repeat: no-repeat;
+  position: absolute;
 }
-.btn-elim{
-  background-image:url(../imagenes/svg/basura.svg) ;
-  margin-left: 1%;
+
+.btn-elim {
+  margin-left: 92%;
+  background-image: url(../imagenes/svg/basura.svg);
   max-width: 3rem;
   max-height: 3rem;
   background-repeat: no-repeat;
+  position: absolute;
 }
 
-/*# sourceMappingURL=bootstrap.css.map */ 
+.fondo-model {
+  display: flex;
+  align-items: center;
+  height: 50%;
+  justify-content: center;
+  height: 100vh;
+  background-color: #212529;
+}
+
+.fondo-contenidomodel {
+  width: 50%;
+  max-width: 800px;
+  height: auto;
+  background-color: rgb(255, 255, 255);
+  border-radius: 100px;
+  padding: 3%;
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.subir-productomodel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subir-botonmodel {
+  margin-top: 1%;
+  width: 100%;
+  margin-bottom: 1%;
+}
+
+.subir-botonmodel button {
+  border-radius: 200px;
+  margin-top: 1%;
+  background-color: #1C1C3D;
+  border: #1C1C3D;
+  color: white;
+  padding: 20px;
+}
+
+.subir-botonmodel button:hover {
+  color: white;
+}
+
+.subir-filtrosmodel {
+  margin-top: 1%;
+  margin-left: 17%;
+  display: flex;
+  justify-content: center;
+}
+
+.inputmodel {
+  margin-top: -6%;
+  margin-bottom: 1%;
+}
+
+.inpumode,
+.modelbusq {
+  min-height: calc(1.5em + 1rem + 2px);
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  background-color: rgb(208, 207, 207);
+  border: #000000;
+  border-radius: 50px;
+  margin-bottom: 1%;
+}
+
+.modelbusq {
+  width: 400px;
+}
+
+.btn-outline-secondary {
+  color: #6c757d;
+  border-color: rgba(139, 69, 19, 0) !important;
+}
+
+.btnmo {
+  display: inline-block;
+  font-weight: 400;
+  margin-left: 20px;
+  line-height: 1.5;
+  background-color: rgb(208, 207, 207) !important;
+  color: #212529;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  border-radius: 200px !important;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.santiaguin {
+
+  width: 1px;
+}
+
+.btnsub {
+  display: inline-block;
+  font-weight: 400;
+  margin-left: 20px;
+  line-height: 1.5;
+  background-color: rgb(255, 255, 255) !important;
+  color: #212529;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  border-radius: 200px !important;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+}
+
+.btnsub:hover {
+  color: black;
+}
+
+.romeror {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+/*# sourceMappingURL=bootstrap.css.map */
+
+.boton.marca.boton-seleccionado {
+
+  color: #6978BF;
+}
+
+.boton.orientacion.boton-seleccionado {
+  color: #6978BF; }
+
+.boton.estado.boton-seleccionado {
+  color: #6978BF;
+}
+
+.preguntas_youknow {
+
+  color: white;
+  padding: 2.5%;
+  padding-bottom: 10%;
+}
+
+.preguntass {
+  margin-top: 5%;
+}
+
+.about_us {
+  color:white;
+  padding:2.5%;
+}
+
+.about_uss {
+
+  padding-top: 3%;
+  
+}
+
+.warap {
+  padding-top:3%;
+}
+.ige {
+  padding:3%;
+}
+
+
