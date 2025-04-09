@@ -1,24 +1,28 @@
 <?php
 require_once("env.php");
 session_start();
-$name = @$_SESSION['name'];
-if ($name == "" || $name == null) {
-    echo json_encode(array("error" => "No estas logeado"));
+
+$username = @$_SESSION['username'];
+if ($username == "" || $username == null) {
+    echo json_encode(array("error" => "No estás logeado"));
     exit;
 }
-$sql = "SELECT name, mail, location FROM users WHERE name = '$name'";
+
+// Obtener datos de usuario
+$sql = "SELECT username, mail, location FROM users WHERE username = '$username'";
 $result = mysqli_query($con, $sql);
 
 if ($result) {
     $data = array();
-
     while ($row = mysqli_fetch_assoc($result)) {
         $data[] = $row;
     }
 }
+
+// Buscar imagen de perfil
 $imagenname = array();
 $directorio = '../imagenes/perfil/';
-$imagen_buscar = $name . ".png";
+$imagen_buscar = $username . ".png";
 $archivos = scandir($directorio);
 if ($archivos) {
     foreach ($archivos as $archivo) {
@@ -27,17 +31,15 @@ if ($archivos) {
         }
     }
 }
-
 $data['imagenes'] = $imagenname;
 
+// Obtener productos comprados por el usuario
 $sql = "SELECT publications.name AS publication, status.id AS status
 FROM users
 INNER JOIN buys ON users.id = buys.user_buyer_id 
 INNER JOIN publications ON buys.publication_id = publications.id
-INNER JOIN status 
-ON status.id = buys.status_id
-WHERE users.name = '$name'
-";
+INNER JOIN status ON status.id = buys.status_id
+WHERE users.username = '$username'";
 
 $result = mysqli_query($con, $sql);
 $data["productos"] = array(); 
@@ -46,8 +48,11 @@ if ($result) {
         $data["productos"][] = $row;
     }
 }
+
+// Obtener publicaciones en venta del usuario
 $data["ventas"] = array();
-$sql = "SELECT id,name FROM publications WHERE seller_id = (SELECT id FROM users WHERE name = '$name' OR mail = '$name')";
+$sql = "SELECT id, name FROM publications 
+WHERE seller_id = (SELECT id FROM users WHERE username = '$username' OR mail = '$username')";
 $result = mysqli_query($con, $sql);
 if ($result) {
     while ($row = mysqli_fetch_assoc($result)) {
@@ -55,6 +60,7 @@ if ($result) {
     }
 }
 
+// Imágenes asociadas a las publicaciones
 $imagenes = scandir('../imagenes/publicacion/');
 $imagenname = array();
 
@@ -75,7 +81,5 @@ foreach ($data['ventas'] as $venta) {
         }
     }
 }
-
-
 
 echo json_encode($data);

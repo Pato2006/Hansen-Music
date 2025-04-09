@@ -15,9 +15,9 @@ $(document).ready(function () {
                     <form action="" method="POST" id="form_login">
                       <div class="">
                         <div class="romero">
-                          <p id="cambio" class="form-label" for="typeEmailX">Usuario/Correo Electronico</p>
+                          <p id="cambio" class="form-label" for="typeEmailX">Nombre de Usuario/Correo Electronico</p>
                         </div>
-                        <input type="email" id="typeEmailX" class="form-control form-control-lg" style="width: 100%;" name="user" />
+                        <input type="email" id="typeEmailX" class="form-control form-control-lg" style="width: 100%;" name="username" />
                       </div>
                       <div class="form-outline form-white mb-4 text-center">
                         <p id="cambio1" class="form-label santiaguinñ" for="typePasswordX">Contraseña</p>

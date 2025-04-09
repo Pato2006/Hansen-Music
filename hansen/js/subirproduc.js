@@ -68,7 +68,16 @@ $(document).ready(function () {
                                                 <li><a class="dropdown-item" href="#" onclick="seleccionarOpcion('estado', 'Usado','Usado')">Usado</a></li>
                                                 </ul>
                                                 <input type="hidden" name="estado_selec" id="estado_seleccionado" name="estado">
-                                            </div>
+                                            </div>`+
+                                            /*<div class="input-group"> AGREGAR CAMPO EN EL PHP PARA QUE ANDE
+                                                <button id="estadoDropdown" class="btnsub btn-outline-secondary dropdown-toggle"
+                                                    type="button" data-bs-toggle="dropdown" aria-expanded="false">Tipo de instrumento</button>
+                                                <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#" onclick="seleccionarOpcion('estado', 'Nuevo','Nuevo')">Nuevo</a></li>
+                                                <li><a class="dropdown-item" href="#" onclick="seleccionarOpcion('estado', 'Usado','Usado')">Usado</a></li>
+                                                </ul>
+                                                <input type="hidden" name="estado_selec" id="estado_seleccionado" name="estado">
+                                            </div>*/`
                                             <div class="input-group">
                                                 
 

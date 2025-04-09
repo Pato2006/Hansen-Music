@@ -1,6 +1,6 @@
 <?php
 require_once  ("env.php");
-$user = $_POST["name"];
+$user = $_POST["username"];
 $contraseña = $_POST["contraseña"];
 $hash = password_hash($contraseña, PASSWORD_DEFAULT);
 switch ($_POST["action"]) {
@@ -21,10 +21,10 @@ switch ($_POST["action"]) {
         $contraseña_aparece = false;
 
         foreach ($data as $row) {
-            if (password_verify($contraseña, $row['contraseña']) && $user == $row['name'] || $user == $row['mail']) {
+            if (password_verify($contraseña, $row['contraseña']) && $user == $row['username'] || $user == $row['mail']) {
                 $contraseña_aparece = true;
                 session_start();
-                $_SESSION['name'] = $row['name'];
+                $_SESSION['username'] = $row['username'];
                 break;
             }
         }

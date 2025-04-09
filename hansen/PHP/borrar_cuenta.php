@@ -1,11 +1,11 @@
 <?php
 require_once "env.php";
 session_start();
-$user = @$_SESSION['name'];
+$user = @$_SESSION['username'];
 $borrar_img = "../imagenes/perfil/$user.png";
 
 try {
-    $sql = "DELETE FROM users WHERE name = '$user' OR mail = '$user'";
+    $sql = "DELETE FROM username WHERE name = '$user' OR mail = '$user'";
     $result = mysqli_query($con, $sql);
 
     if ($result) {

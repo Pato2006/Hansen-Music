@@ -18,6 +18,16 @@ function registrarse() {
                                           style="width: 380px;" name="name" />
                                   </div>
                                   <div class="form-outline form-white mb-4">
+                                      <p class="form-label" for="">Nombre</p>
+                                      <input type="text" id="typeEmailX" class="form-control form-control-lg"
+                                          style="width: 380px;" name="name" />
+                                  </div>
+                                  <div class="form-outline form-white mb-4">
+                                      <p class="form-label" for="">Apellido</p>
+                                      <input type="text" id="typeEmailX" class="form-control form-control-lg"
+                                          style="width: 380px;" name="name" />
+                                  </div>
+                                  <div class="form-outline form-white mb-4">
                                       <p class="form-label" for="typeEmailX">Correo Electronico</p>
                                       <input type="email" id="typeEmailX" class="form-control form-control-lg"
                                           style="width: 380px;" name="mail" />
@@ -63,12 +73,12 @@ function registrarse() {
       },
     });
   })
-} 
+}
 
 $(document).ready(function () {
   $("#register").click(function (event) {
     event.preventDefault();
     registrarse(); // Llamando a la función registrarse
-});
+  });
 
 })

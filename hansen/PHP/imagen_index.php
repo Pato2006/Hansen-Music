@@ -2,10 +2,10 @@
 session_start();
 $data = array();
 
-if ($_SESSION['name']) {
+if ($_SESSION['username']) {
     $imagenname = array();
     $directorio = '../imagenes/perfil/';
-    $imagen_buscar = $_SESSION['name'] . ".png";
+    $imagen_buscar = $_SESSION['username'] . ".png";
     $archivos = scandir($directorio);
 
     if ($archivos) {
