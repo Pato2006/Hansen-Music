@@ -5,7 +5,7 @@ $(document).ready(function () {
   from = ""
   to = ""
   startPage = 1
-  currentPage = 1;
+    = 1;
   maxpag = 20;
   historyStack = [];
   UltimaMarca = ""

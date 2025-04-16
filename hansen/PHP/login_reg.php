@@ -1,6 +1,9 @@
 <?php
 require_once  ("env.php");
 $user = $_POST["username"];
+$name = $_POST["name"];
+$surname = $_POST["surname"];
+$mail = $_POST["mail"];
 $contraseña = $_POST["contraseña"];
 $hash = password_hash($contraseña, PASSWORD_DEFAULT);
 switch ($_POST["action"]) {
@@ -36,6 +39,8 @@ switch ($_POST["action"]) {
         }
         break;
         case "registrarse":
+        echo $name
+        /*
         $sql = "INSERT INTO users (name, contraseña) VALUES ('$user', '$hash')";
         $result = mysqli_query($con, $sql);
         if ($result) {
@@ -43,5 +48,6 @@ switch ($_POST["action"]) {
         } else {
             echo "Algo fallo";
         }
+            */
         break;
 }

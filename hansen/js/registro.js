@@ -14,18 +14,18 @@ function registrarse() {
                                   <p class="text-white-50 mb-5">Registrate</p>
                                   <div class="form-outline form-white mb-4">
                                       <p class="form-label" for="">Nombre de usuario</p>
-                                      <input type="text" id="typeEmailX" class="form-control form-control-lg"
-                                          style="width: 380px;" name="name" />
+                                      <input type="text" id="typeNameX" class="form-control form-control-lg"
+                                          style="width: 380px;" name="username" />
                                   </div>
                                   <div class="form-outline form-white mb-4">
                                       <p class="form-label" for="">Nombre</p>
-                                      <input type="text" id="typeEmailX" class="form-control form-control-lg"
+                                      <input type="text" id="typeNombreX" class="form-control form-control-lg"
                                           style="width: 380px;" name="name" />
                                   </div>
                                   <div class="form-outline form-white mb-4">
                                       <p class="form-label" for="">Apellido</p>
-                                      <input type="text" id="typeEmailX" class="form-control form-control-lg"
-                                          style="width: 380px;" name="name" />
+                                      <input type="text" id="typesurnameX" class="form-control form-control-lg"
+                                          style="width: 380px;" name="surname" />
                                   </div>
                                   <div class="form-outline form-white mb-4">
                                       <p class="form-label" for="typeEmailX">Correo Electronico</p>
