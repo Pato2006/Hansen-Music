@@ -2,7 +2,7 @@
 require_once("env.php");
 session_start();
 
-$name = $_SESSION['name'];
+$name = $_SESSION['username'];
 $mail = $_POST['mail'];
 $location = $_POST['residencia'];
 
