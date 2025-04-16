@@ -85,7 +85,7 @@ $(document).ready(function () {
             }
           }
           var usuario = data[0];
-          $("#perfil").html(usuario.name);
+          $("#perfil").html(usuario.username);
           $("#residencia").html(usuario.location);
           $("#correo").html(usuario.mail);
           if (data.imagenes[0]) {

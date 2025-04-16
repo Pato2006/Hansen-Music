@@ -2,7 +2,7 @@
 require_once("env.php");
 session_start();
 
-$name = $_SESSION['name'];
+$name = $_SESSION['username'];
 $tipo_imagen = $_POST['tipo'];
 $tamaño_imagen = $_POST['tamaño'];
 $temp_imagen = $_FILES['imagen']['tmp_name'];
