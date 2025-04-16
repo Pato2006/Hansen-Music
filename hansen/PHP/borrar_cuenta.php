@@ -1,29 +1,30 @@
 <?php
 require_once "env.php";
 session_start();
+
 $user = @$_SESSION['username'];
 $borrar_img = "../imagenes/perfil/$user.png";
 
+$data = [];
+
 try {
-    $sql = "DELETE FROM username WHERE name = '$user' OR mail = '$user'";
+    $sql = "DELETE FROM users WHERE username = '$user' OR mail = '$user'";
     $result = mysqli_query($con, $sql);
 
     if ($result) {
-        $data = array();
         $data[] = "Tu cuenta se borró satisfactoriamente";
-        $_SESSION['name'] = "";
+        $_SESSION['username'] = "";
 
         if (file_exists($borrar_img)) {
-            if (unlink($borrar_img)) {
-            } else {
+            if (!unlink($borrar_img)) {
+                $data[] = "No se pudo borrar la imagen de perfil.";
             }
-        } else {
         }
     } else {
-        $data[] =  "Algo salió mal, puede ser que realizaste una compra o tengas una publicacion activa";
+        $data[] = "Error SQL: " . mysqli_error($con);
     }
 } catch (mysqli_sql_exception $e) {
-    $data[] = "Error al borrar la cuenta, pobablemente tengas una publicacion activa o hayas comprado un producto";
+    $data[] = "Error MySQL: " . $e->getMessage();
 }
 
 mysqli_close($con);
