@@ -17,11 +17,11 @@ if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-$sql = "SELECT * FROM users WHERE name = '$name'";
+$sql = "SELECT * FROM users WHERE username = '$name'";
 $result = mysqli_query($con, $sql);
 
 if (mysqli_num_rows($result) > 0) {
-    $sql_insert = "UPDATE users SET mail = '$mail', `location` = '$location' WHERE name = '$name'";
+    $sql_insert = "UPDATE users SET mail = '$mail', `location` = '$location' WHERE username = '$name'";
     if (mysqli_query($con, $sql_insert)) {
         echo "Actualizacion Exitosa";
     } else {
