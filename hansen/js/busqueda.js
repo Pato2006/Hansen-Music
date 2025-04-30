@@ -1,11 +1,20 @@
 $(document).ready(function () {
+  $("#busqueda").click(function () {
+    currentPage = 1;
+    marca_id = ""
+    orientacion_id = ""
+    estado = ""
+    from = ""
+    to = ""
+    bus(marca_id, orientacion_id, estado, from, to);
+  });
+
   marca_id = ""
   orientacion_id = ""
   estado = ""
   from = ""
   to = ""
   startPage = 1
-    = 1;
   maxpag = 20;
   historyStack = [];
   UltimaMarca = ""
@@ -72,15 +81,6 @@ $(document).ready(function () {
   })
 
 
-  $("#busqueda").click(function () {
-    currentPage = 1;
-    marca_id = ""
-    orientacion_id = ""
-    estado = ""
-    from = ""
-    to = ""
-    bus(marca_id, orientacion_id, estado, from, to);
-  });
 
   $("#buscador").on("keypress", function (e) {
     currentPage = 1;
