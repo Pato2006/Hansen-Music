@@ -5,6 +5,7 @@ $name_producto = $_POST['nombre'];
 $descripcion_producto = $_POST['descripcion'];
 $estado = $_POST['estado_selec'];
 $producto = $_POST['product_selec'];
+$tipo = $_POST['tipo_selec'];
 $entrega = $_POST['send_selec'];
 $precio = $_POST['precio'];
 session_start();
@@ -34,13 +35,13 @@ if (isset($_SESSION['username']) && $_SESSION['username'] != "") {
         $vendedor = $datos['id'];
 
         // Validar datos del producto
-        if ($name_producto != "" && $descripcion_producto != "" && $estado != "" && $producto != "" && $entrega != "" && $precio != "") {
+        if ($name_producto != "" && $descripcion_producto != "" && $estado != "" && $producto != "" && $entrega != "" && $precio != "" && $tipo != "") {
             if ($nombre_archivo != "" && $tipo_archivo != "") {
                 if (strpos($tipo_archivo, 'png') !== false || strpos($tipo_archivo, 'jpg') !== false || strpos($tipo_archivo, 'jpeg') !== false) {
                     
                     // Subir publicación
                     $sql2 = "INSERT INTO publications (seller_id, product_id, name, description, price, state, send_id) 
-                             VALUES ('$vendedor', '$producto', '$name_producto', '$descripcion_producto', '$precio', '$estado', '$entrega')";
+                             VALUES ('$vendedor', '$producto', '$name_producto', '$descripcion_producto', '$precio', '$estado', '$tipo' '$entrega')";
                     $result2 = mysqli_query($con, $sql2);
 
                     if ($result2) {
