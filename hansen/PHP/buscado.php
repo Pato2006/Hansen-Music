@@ -3,6 +3,7 @@ require_once "env.php";
 
 $texto = isset($_POST['texto_buscar']) ? $_POST['texto_buscar'] : '';
 $marca = isset($_POST['marca']) ? $_POST['marca'] : '';
+$tipo = isset($_POST['tipo']) ? $_POST['tipo'] : '';
 $orientacion = isset($_POST['orientacion']) ? $_POST['orientacion'] : '';
 $estado = isset($_POST['estado']) ? $_POST['estado'] : '';
 $from = isset($_POST['from']) ? $_POST['from'] : '';
@@ -77,6 +78,7 @@ require_once "marcas.php";
 require_once "orientaciones.php";
 require_once "product.php";
 require_once "sends.php";
+require_once "types.php";
 
 require_once "registros.php";
 
@@ -84,6 +86,7 @@ $response = [
     'brands' => $brands,
     'publications' => $publications,
     'orientations' => $orientations,
+    'types' => $types,
     'products' => $products,
     'sends' => $sends,
     'registros' => $totalCount,

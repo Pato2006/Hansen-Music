@@ -68,16 +68,19 @@ $(document).ready(function () {
                                                 <li><a class="dropdown-item" href="#" onclick="seleccionarOpcion('estado', 'Usado','Usado')">Usado</a></li>
                                                 </ul>
                                                 <input type="hidden" name="estado_selec" id="estado_seleccionado" name="estado">
-                                            </div>`+
-                                            /*<div class="input-group"> AGREGAR CAMPO EN EL PHP PARA QUE ANDE
-                                                <button id="estadoDropdown" class="btnsub btn-outline-secondary dropdown-toggle"
+                                            </div>
+                                            <div class="input-group">
+                                                <button id="typeDropdown" class="btnsub btn-outline-secondary dropdown-toggle"
                                                     type="button" data-bs-toggle="dropdown" aria-expanded="false">Tipo de instrumento</button>
-                                                <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#" onclick="seleccionarOpcion('estado', 'Nuevo','Nuevo')">Nuevo</a></li>
-                                                <li><a class="dropdown-item" href="#" onclick="seleccionarOpcion('estado', 'Usado','Usado')">Usado</a></li>
-                                                </ul>
-                                                <input type="hidden" name="estado_selec" id="estado_seleccionado" name="estado">
-                                            </div>*/`
+                                                <ul class="dropdown-menu">`
+                    $.each(data["types"], function (index, type) {
+                        str += `<li><a class="dropdown-item" href="#" onclick="seleccionarOpcion('type', '${type.id}', '${type.name}')">${type.name}</a></li>`;
+                    });
+                    str +=  `</ul>
+                                                                                               
+                                            </ul>
+                                                <input type="hidden" name="tipo_selec" id="tipo_seleccionado" name="tipo">
+                                            </div>
                                             <div class="input-group">
                                                 
 
@@ -196,6 +199,8 @@ $(document).on('click', '#subirM', function () {
         orientacion = $("#orientacion_seleccionado").val().trim()
 
         marca = $("#marca_seleccionado").val().trim()
+
+        tipo = $("#tipo_seleccionado").val().trim()
 
         if (modelo === '') {
             alert("Por favor, ingrese un modelo válido.");
