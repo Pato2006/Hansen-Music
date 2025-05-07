@@ -6,9 +6,10 @@ products.name AS product,
 brands.name AS brand, 
 orientations.name AS orientation, 
 sends.name AS sends,
-users.name AS seller
+users.username AS seller,
+types.name AS type
 FROM publications 
-        INNER JOIN users
+        LEFT JOIN users
         ON publications.seller_id = users.id
         INNER JOIN products
         ON products.id = publications.product_id
@@ -18,7 +19,10 @@ FROM publications
         ON orientations.id = products.orientation_id
         INNER JOIN sends
         ON publications.send_id = sends.id
+        INNER JOIN types
+        ON types.id = publications.type_id
         WHERE publications.id = $id
+
 ";
 $result = mysqli_query($con, $sql);
 if ($result) {

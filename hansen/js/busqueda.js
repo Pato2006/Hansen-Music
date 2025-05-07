@@ -250,7 +250,7 @@ function clickeado(id) {
     },
     async: false,
     success: function (data) {
-      console.log(data)
+      console.log(data[0])
       str =
         `
       <main class="fondo-black">
@@ -272,6 +272,7 @@ function clickeado(id) {
                               <p>Estado: `+ data[0].state + `</p>
                               <p>Orientacion: `+ data[0].orientation + `</p>
                               <p>Producto: `+ data[0].product + `</p>
+                              <p>Tipo de instrumento: `+ data[0].type + `</p>
                           </section>
                       </div>
                   </div>
