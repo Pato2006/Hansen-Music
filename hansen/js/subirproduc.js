@@ -79,7 +79,7 @@ $(document).ready(function () {
                     str +=  `</ul>
                                                                                                
                                             </ul>
-                                                <input type="hidden" name="tipo_selec" id="tipo_seleccionado" name="tipo">
+                                                <input type="hidden" name="type_selec" id="type_seleccionado">
                                             </div>
                                             <div class="input-group">
                                                 
