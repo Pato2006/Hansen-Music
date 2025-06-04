@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 
+<?php
+session_start();
+$isAdmin = isset($_SESSION['role_id']) && $_SESSION['role_id'] == 1;
+
+?>
+
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,9 +23,9 @@
     <link rel="stylesheet" href="css/bootstrap-grid.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/keyframe.css">
-    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/cesese.css">
     <link rel="stylesheet" href="css/carrusel.css">
+    <link rel="stylesheet" href="css/styles.css">
     <script src="js/editarpubli.js"></script>
     <script src="js/script.js"></script>
     <script src="js/busqueda.js"></script>
@@ -29,6 +36,7 @@
     <script src="js/borrar_publi.js"></script>
     <script src="js/perfil_subir.js"></script>
     <script src="js/apartados.js"></script>
+    <script src="js/godmode.js"></script>
     <title>Hansen Music</title>
 </head>
 
@@ -42,7 +50,7 @@
             </ul>
         </div>
     </header>
-    <nav class="navbar navbar-expand-lg" id="navbar-zarpado">
+    <nav class="navbar navbar-expand-lg" id="navbar-zarpado" style="<?= $isAdmin ? 'background-color: gray;' : '' ?>">
         <div class="container">
             <a class="navbar-brand pe-4" href="index.php">
                 <svg class="" width="400" height="64" src="">
@@ -95,8 +103,8 @@
             </div>
         </div>
     </nav>
-    <div id="contenedor">
-        <main id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+    <div id="contenedor" style="<?= $isAdmin ? 'display: none;' : '' ?>" onload="<?= $isAdmin ? 'ModoAdmin()' : '' ?>">
+    <main id="carouselExample" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner" onclick="bus()">
                 <div class="carousel-item active">
                     <img src="imagenes/carrusel/carrusel1.png" class="d-block w-100" alt="Imagen 1">

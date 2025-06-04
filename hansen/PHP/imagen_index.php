@@ -2,6 +2,8 @@
 session_start();
 $data = array();
 
+
+
 if ($_SESSION['username']) {
     $imagenname = array();
     $directorio = '../imagenes/perfil/';

@@ -48,10 +48,16 @@ $(document).ready(function () {
         data: $("#form_login").serialize(),
         async: false,
         success: function (response) {
-          if (response == "1") {
-            alert("Inicio exitoso");
+          if (response == "admin") {
+            alert("Hola admin");
+            $("#navbar-zarpado").css("background-color", "gray");
             window.location.href = "index.php";
-          } else {
+          } 
+          else if(response == "user") {
+            alert("Hola user");
+            window.location.href = "index.php";
+          } 
+          else {
             var cambio = document.getElementById("cambio");
             var cambio2 = document.getElementById("cambio1");
             cambio.textContent = "Usuario/Correo Electrónico ❌";

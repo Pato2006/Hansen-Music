@@ -1226,6 +1226,7 @@ input[type="file"] {
   cursor: pointer;
 }
 
+
 .fav.active {
   content: "★";
   color: black;
