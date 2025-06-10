@@ -46,7 +46,7 @@ $(document).ready(function () {
                                             <div class="mb-3 align-items-center">
                                                 <section class="rounded">
                                                     <input type="text" class="form-control form-control-lg"
-                                                        placeholder="nombre del producto" id="nombre_producto" name="nombre">
+                                                        placeholder="Nombre del producto" id="nombre_producto" name="nombre">
                                                 </section>
                                             </div>
                                         </div>
@@ -121,8 +121,8 @@ $(document).ready(function () {
                                         <div class="subir-precio">
                                             <div class="input-group input-group-lg mb-3 align-items-center">
                                                 <section class="rounded">
-                                                    <input type="number" class="form-control form-control-lg" placeholder="Precio"
-                                                        id="precio" name="precio">
+                                                    <input type="number" class="form-control form-control-lg mb-3" placeholder="Stock" id="stock" name="stock">
+                                                    <input type="number" class="form-control form-control-lg" placeholder="Precio" id="precio" name="precio">
                                                 </section>
                                             </div>
                                         </div>

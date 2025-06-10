@@ -320,6 +320,7 @@ function clickeado(id) {
                                             <p>Orientacion: ${data[0].orientation}</p>
                                             <p>Producto: ${data[0].product}</p>
                                             <p>Tipo de instrumento: ${data[0].type}</p>
+                                            <p>Stock: `+ data[0].stock + `</p>
                                         </section>
                                     </div>
                                 </div>

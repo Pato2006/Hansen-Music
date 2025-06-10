@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-05-2025 a las 01:47:03
+-- Tiempo de generación: 10-06-2025 a las 18:30:01
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Versión de PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -131,22 +131,24 @@ CREATE TABLE `publications` (
 --
 
 INSERT INTO `publications` (`id`, `seller_id`, `product_id`, `name`, `description`, `price`, `state`, `send_id`, `type_id`, `stock`) VALUES
-(1, 1, 3, 'Guitarra Verde', 'Suena bien', 2500, 'Nuevo', 1, NULL, NULL),
-(2, 1, 1, 'Guitarra Roja', 'Suena hermosa', 1500, 'Usado', 2, NULL, NULL),
-(3, 1, 2, 'Guitarra azul', 'casi nueva', 250, 'Usado', 2, NULL, NULL),
-(4, 1, 2, 'Guitarra naranja', 'casi nueva', 5000, 'Nuevo', 2, NULL, NULL),
-(5, 1, 1, 'Bombo genial', 'era de mi hermano pero bueno', 500, 'Nuevo', 2, NULL, NULL),
-(6, 1, 3, 'Bombo malo', 'lo compre lo vendo', 1250, 'Nuevo', 1, NULL, NULL),
-(7, 2, 2, 'Teclado', 'suena', 4000, 'Usado', 1, NULL, NULL),
-(8, 2, 3, 'Teclado sarpado', 'Está buenisimo', 10000, 'Nuevo', 2, NULL, NULL),
-(9, 2, 1, 'Bajo electrico', 'asi como esta lo vendo', 200, 'Nuevo', 2, NULL, NULL),
-(10, 2, 2, 'Bajo no anda', 'no anda', 1, 'Nuevo', 2, NULL, NULL),
-(11, 2, 4, 'Flauta amarilla', 'la use bastante', 700, 'Usado', 1, NULL, NULL),
-(12, 2, 4, 'Flauta roja', 'la use poquisimo', 800, 'Nuevo', 2, NULL, NULL),
-(13, 2, 4, 'Flauta no suena', 'remato', 500, 'Usado', 2, NULL, NULL),
-(14, 2, 4, 'Flauta nueva!', 'Hermosa para empezar', 9000, 'Nuevo', 1, NULL, NULL),
-(15, 2, 1, 'Guitarra rota', 'no anda, remato', 50, 'Usado', 1, NULL, NULL),
-(16, 3, 1, 'asd', 'asd', 123, 'Nuevo', 1, NULL, NULL);
+(1, 1, 3, 'Guitarra Verde', 'Suena bien', 2500, 'Nuevo', 1, 3, 4),
+(2, 1, 1, 'Guitarra Roja', 'Suena hermosa', 1500, 'Usado', 2, 3, 4),
+(3, 1, 2, 'Guitarra azul', 'casi nueva', 250, 'Usado', 2, 3, 4),
+(4, 1, 2, 'Guitarra naranja', 'casi nueva', 5000, 'Nuevo', 2, 3, 4),
+(5, 1, 1, 'Bombo genial', 'era de mi hermano pero bueno', 500, 'Nuevo', 2, 3, 4),
+(6, 1, 3, 'Bombo malo', 'lo compre lo vendo', 1250, 'Nuevo', 1, 3, 4),
+(7, 2, 2, 'Teclado', 'suena', 4000, 'Usado', 1, 3, 4),
+(8, 2, 3, 'Teclado sarpado', 'Está buenisimo', 10000, 'Nuevo', 2, 3, 4),
+(9, 2, 1, 'Bajo electrico', 'asi como esta lo vendo', 200, 'Nuevo', 2, 3, 4),
+(10, 2, 2, 'Bajo no anda', 'no anda', 1, 'Nuevo', 2, 3, 4),
+(11, 2, 4, 'Flauta amarilla', 'la use bastante', 700, 'Usado', 1, 3, 4),
+(12, 2, 4, 'Flauta roja', 'la use poquisimo', 800, 'Nuevo', 2, 3, 4),
+(13, 2, 4, 'Flauta no suena', 'remato', 500, 'Usado', 2, 3, 4),
+(14, 2, 4, 'Flauta nueva!', 'Hermosa para empezar', 9000, 'Nuevo', 1, 3, 4),
+(15, 2, 1, 'Guitarra rota', 'no anda, remato', 50, 'Usado', 1, 3, 4),
+(16, 3, 1, 'asd', 'asd', 123, 'Nuevo', 1, 3, 4),
+(19, 3, 1, 'asdf', 'asdf', 123, 'Nuevo', 1, 3, 4),
+(20, 3, 1, 'asd', 'asd', 123, 'Nuevo', 1, 3, 4);
 
 -- --------------------------------------------------------
 
@@ -410,7 +412,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT de la tabla `publications`
 --
 ALTER TABLE `publications`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `reports`
