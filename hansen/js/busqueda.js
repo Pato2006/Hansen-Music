@@ -242,17 +242,24 @@ function bus(marca_id, orientacion_id, estado, from, to) {
 
 function clickeado(id) {
   $.ajax({
-    url: "php/clickeado.php",
+    url: "PHP/roles_id.php",
     type: "POST",
     dataType: "json",
-    data: {
-      id: id,
-    },
     async: false,
     success: function (data) {
-      console.log(data[0])
-      str =
-        `
+      if (data.roles == 2) {
+        $.ajax({
+          url: "php/clickeado.php",
+          type: "POST",
+          dataType: "json",
+          data: {
+            id: id,
+          },
+          async: false,
+          success: function (data) {
+            console.log(data[0])
+            str =
+              `
       <main class="fondo-black">
       <div class="container">
           <div class="fondo-contenido d-flex align-items-start justify-content-center">
@@ -296,36 +303,42 @@ function clickeado(id) {
       
   </main>`;
 
-      $("#contenedor").html(str);
-      for (i = 0; i < data.imagenes.length; i++) {
-        if (data[0].id + '.png' == data.imagenes[i]) {
-          var imageUrl = 'imagenes/publicacion/' + data.imagenes[i];
-          $("#img1").attr("src", imageUrl);
-        }
-      }
-
-
-      $("#comprar-prod").click(function () {
-        $.ajax({
-          url: "php/compra.php",
-          type: "POST",
-          dataType: "json",
-          data: data[0],
-          async: false,
-          success: function (data) {
-            if (data.message) {
-              alert(data.message);
-            } else if (data.error) {
-              alert("Error: " + data.error);
+            $("#contenedor").html(str);
+            for (i = 0; i < data.imagenes.length; i++) {
+              if (data[0].id + '.png' == data.imagenes[i]) {
+                var imageUrl = 'imagenes/publicacion/' + data.imagenes[i];
+                $("#img1").attr("src", imageUrl);
+              }
             }
-          }
-        })
-      })
+
+
+            $("#comprar-prod").click(function () {
+              $.ajax({
+                url: "php/compra.php",
+                type: "POST",
+                dataType: "json",
+                data: data[0],
+                async: false,
+                success: function (data) {
+                  if (data.message) {
+                    alert(data.message);
+                  } else if (data.error) {
+                    alert("Error: " + data.error);
+                  }
+                }
+              })
+            })
+          },
+          error: function (error) {
+            alert(error);
+          },
+        });
+      }
     },
-    error: function (error) {
-      alert(error);
-    },
+    error: function () {
+    }
   });
+
 }
 
 //Funciones para el paginador

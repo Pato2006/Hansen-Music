@@ -288,92 +288,6 @@ ${layoutType === 'simplified' ? `<div class="icono-svg"><img src="img-svg/santi2
     });
 }
 
-function clickeado(id) {
-    $.ajax({
-        url: "php/clickeado.php",
-        type: "POST",
-        dataType: "json",
-        data: {
-            id: id,
-        },
-        async: false,
-        success: function (data) {
-            console.log(data[0]);
-            let str = `
-                <main class="fondo-black">
-                    <div class="container">
-                        <div class="fondo-contenido d-flex align-items-start justify-content-center">
-                            <section class="subir-producto">
-                                <div class="subir-imagen" id="subirImagenDiv">
-                                    <img src="imagenes/svg/plus-lg.svg" class="d-block w-100" alt="Plus Icon" id="img1">
-                                </div>
-                                <div class="subir-titulo">
-                                    <div class="mb-3 align-items-center">
-                                        <section class="rounded">
-                                            <h1>${data[0].name}</h1>
-                                            <p>${data[0].seller}</p>
-                                            <img class="romeror" src="imagenes/perfil/${data[0].seller}.png">
-                                            <h2>$${data[0].price}</h2>
-                                            <p>Tipo de entrega: ${data[0].sends}</p>
-                                            <p>Descripcion: ${data[0].description}</p>
-                                            <p>Estado: ${data[0].state}</p>
-                                            <p>Orientacion: ${data[0].orientation}</p>
-                                            <p>Producto: ${data[0].product}</p>
-                                            <p>Tipo de instrumento: ${data[0].type}</p>
-                                            <p>Stock: `+ data[0].stock + `</p>
-                                        </section>
-                                    </div>
-                                </div>
-                                <div class="subir-descripcion ml-4">
-                                    <div class="input-group input-group-lg mb-3 align-items-center">
-                                        <section class="rounded">
-                                        </section>
-                                    </div>
-                                </div>
-                                <div class="subir-filtros mb-5 me-auto">
-                                    <div class="subir-boton d-flex-normal justify-content-center align-items-center" id="lol">
-                                        <button class="btn w-100 h-100" type="button" id="comprar-prod">Comprar</button>
-                                    </div>
-                                    <div class="subir-envio">
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-                </main>`;
-
-
-
-            $("#contenedor").html(str);
-            for (let i = 0; i < data.imagenes.length; i++) {
-                if (data[0].id + '.png' === data.imagenes[i]) {
-                    var imageUrl = 'imagenes/publicacion/' + data.imagenes[i];
-                    $("#img1").attr("src", imageUrl);
-                }
-            }
-
-            $("#comprar-prod").click(function () {
-                $.ajax({
-                    url: "php/compra.php",
-                    type: "POST",
-                    dataType: "json",
-                    data: data[0],
-                    async: false,
-                    success: function (data) {
-                        if (data.message) {
-                            alert(data.message);
-                        } else if (data.error) {
-                            alert("Error: " + data.error);
-                        }
-                    }
-                });
-            });
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.error("AJAX error for clickeado:", textStatus, errorThrown);
-        }
-    });
-}
 
 // Global variable for buttonsHTML (used by renderButtons, antB, actB, sigB)
 let buttonsHTML = '';
@@ -535,7 +449,7 @@ function reporte(id) {
         type: "POST",
         data: { id: id },
         success: function() {
-            
+            alert("Reporte enviado correctamente");
         },
         error: function() {
         }
