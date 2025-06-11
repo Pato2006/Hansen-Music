@@ -629,9 +629,10 @@ label[for="envio"] {
 .subir-producto {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(1, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  margin-top: 135px;
 }
 
 .subir-imagen {
@@ -947,7 +948,7 @@ input[type="file"] {
 
 .tarperpro-container {
   flex: 0 0 100%;
-  max-width: 100%;
+  max-width: 40%;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -1002,7 +1003,7 @@ input[type="file"] {
 }
 
 .btn-edito {
-  margin-left: 90%;
+  margin-left: 80%;
   max-width: 3rem;
   max-height: 3rem;
   background-image: url(../imagenes/svg/lapiz.svg);

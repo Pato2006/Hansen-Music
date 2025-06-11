@@ -36,7 +36,16 @@ $isAdmin = isset($_SESSION['role_id']) && $_SESSION['role_id'] == 1;
     <script src="js/borrar_publi.js"></script>
     <script src="js/perfil_subir.js"></script>
     <script src="js/apartados.js"></script>
-    <script src="js/godmode.js"></script>
+    <script>
+        // Pasar la variable PHP a JavaScript
+        var isAdmin = <?= json_encode($isAdmin) ?>;
+
+        if (isAdmin) {
+            var script = document.createElement('script');
+            script.src = 'js/godmode.js';
+            document.head.appendChild(script);
+        }
+    </script>
     <title>Hansen Music</title>
 </head>
 
@@ -104,7 +113,7 @@ $isAdmin = isset($_SESSION['role_id']) && $_SESSION['role_id'] == 1;
         </div>
     </nav>
     <div id="contenedor" style="<?= $isAdmin ? 'display: none;' : '' ?>" onload="<?= $isAdmin ? 'ModoAdmin()' : '' ?>">
-    <main id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <main id="carouselExample" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner" onclick="bus()">
                 <div class="carousel-item active">
                     <img src="imagenes/carrusel/carrusel1.png" class="d-block w-100" alt="Imagen 1">
