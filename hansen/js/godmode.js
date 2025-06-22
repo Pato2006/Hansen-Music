@@ -259,7 +259,6 @@ function bus(marca_id, orientacion_id, estado, from, to, layoutType) {
                                     <p><strong>Orientacion:</strong> ${data["publications"][i].orientation}</p>
                                     <p><strong>Modelo:</strong> ${data["publications"][i].product}</p>
                                 </div>
-${layoutType === 'simplified' ? `<div class="icono-svg"><img src="img-svg/santi2.svg" alt="alerta" style="width:50px; height: 50px;" onclick="reporte('${data["publications"][i].id}')"></div>` : ''}
                             </div>
                         </a>
                     </div>
@@ -442,16 +441,4 @@ function validarInputs() {
     }
     // Automatically trigger search after validation
     $('.enviar.precio').click();
-}
-function reporte(id) {
-    $.ajax({
-        url: "PHP/reportes.php",
-        type: "POST",
-        data: { id: id },
-        success: function() {
-            alert("Reporte enviado correctamente");
-        },
-        error: function() {
-        }
-    });
 }

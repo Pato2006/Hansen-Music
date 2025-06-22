@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
   $("#busqueda").click(function () {
     currentPage = 1;
     marca_id = ""
@@ -99,7 +100,7 @@ $(document).ready(function () {
 
 
 //Funcion listado
-function bus(marca_id, orientacion_id, estado, from, to) {
+function bus(marca_id, orientacion_id, estado, from, to, layoutType = "simplified") {
   $.ajax({
     url: "php/buscado.php",
     type: "POST",
@@ -207,6 +208,7 @@ function bus(marca_id, orientacion_id, estado, from, to) {
                           <h5>Orientacion: ${data["publications"][i].orientation}</h5>
                           <h5>Estado: ${data["publications"][i].state}</h5>
                         </div>
+                                                ${layoutType === 'simplified' ? `<div class="icono-svg"><img src="img-svg/santi2.svg" alt="alerta" style="width:50px; height: 50px;" onclick="reporte('${data["publications"][i].id}')"></div>` : ''}
                       </div>
                     </a>
                   </div>
@@ -505,4 +507,17 @@ function validarInputs() {
     hastaInput.value = '1';
   }
 
+}
+
+function reporte(id) {
+  $.ajax({
+    url: "PHP/reportes.php",
+    type: "POST",
+    data: { id: id },
+    success: function () {
+      alert("Reporte enviado correctamente");
+    },
+    error: function () {
+    }
+  });
 }
