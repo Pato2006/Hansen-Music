@@ -297,6 +297,8 @@ function clickeado(id) {
                       <div class="subir-boton d-flex-normal justify-content-center align-items-center " id="lol">
                           <button class="btn w-100 h-100" type="button" id="comprar-prod">Comprar</button>
                       </div>
+<img src="img-svg/santi2.svg" alt="alerta" style="width:50px; height:50px;" onclick="reporte(${data[0].id})">
+                        <button class="fav" id="fav" onclick="toggleFavorito(this)">☆</button>
                       <div class="subir-envio">
               </section>
           </div>
