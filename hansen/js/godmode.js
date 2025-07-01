@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $("#navbar-zarpado").append('<button type="button" id="reportes" onclick="reportes()">reportes</button>');
     // Initial AJAX call to check user roles
     $.ajax({
         url: "PHP/roles_id.php",
@@ -8,7 +9,7 @@ $(document).ready(function () {
         success: function (data) {
             console.log("User role:", data.roles);
             if (data.roles == 2) {
-                
+
             } else if (data.roles == 1) {
                 // Role 1: Display dynamic product cards without filters, using the simplified layout
                 displayAdminViewWithProducts();
@@ -441,4 +442,36 @@ function validarInputs() {
     }
     // Automatically trigger search after validation
     $('.enviar.precio').click();
+}
+function reportes() {
+    $.ajax({
+        url: "PHP/ver_reportes.php",
+        type: "POST",
+        dataType: "json",
+        async: false,
+        success: function (data) {
+            str = `
+                <div class="reportes">
+                    <h2 style="color:red;">Reportes</h2>
+            `;
+
+            for (let i = 0; i < data.length; i++) {
+                str += `
+                    <div class="reporte">
+                        <h3 style= color:red;>ID: ${data[i].id}</h3>
+                        <p style= color:red;>Publication ID: ${data[i].publication_id}</p>
+                        <p style= color:red;><strong>Fecha:</strong> ${data[i].report_date}</p>
+                    </div>
+                `;
+            }
+
+            str += `</div>`;
+
+            // Por ejemplo, mostrarlo en un contenedor
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            str = `<p>Error al cargar los reportes: ${textStatus}</p>`;
+        }
+    });
+$("#contenedor").html(str);
 }

@@ -26,6 +26,7 @@ $isAdmin = isset($_SESSION['role_id']) && $_SESSION['role_id'] == 1;
     <link rel="stylesheet" href="css/cesese.css">
     <link rel="stylesheet" href="css/carrusel.css">
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/reportar.js"><script/>
     <script src="js/editarpubli.js"></script>
     <script src="js/script.js"></script>
     <script src="js/busqueda.js"></script>
@@ -36,7 +37,6 @@ $isAdmin = isset($_SESSION['role_id']) && $_SESSION['role_id'] == 1;
     <script src="js/borrar_publi.js"></script>
     <script src="js/perfil_subir.js"></script>
     <script src="js/apartados.js"></script>
-    <script src="js/reportar.js"><script/>
     <script>
         // Pasar la variable PHP a JavaScript
         var isAdmin = <?= json_encode($isAdmin) ?>;
