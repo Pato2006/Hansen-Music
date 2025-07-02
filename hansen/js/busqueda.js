@@ -508,18 +508,4 @@ function validarInputs() {
   if (hastaInput.value == 0) {
     hastaInput.value = '1';
   }
-
-}
-
-function reporte(id) {
-  $.ajax({
-    url: "PHP/reportes.php",
-    type: "POST",
-    data: { id: id },
-    success: function () {
-      alert("Reporte enviado correctamente");
-    },
-    error: function () {
-    }
-  });
 }
