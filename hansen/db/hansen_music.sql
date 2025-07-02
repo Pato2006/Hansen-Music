@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-06-2025 a las 18:30:01
+-- Tiempo de generación: 03-07-2025 a las 00:01:41
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -62,7 +62,8 @@ CREATE TABLE `buys` (
 
 INSERT INTO `buys` (`id`, `user_buyer_id`, `publication_id`, `status_id`, `purchase_date`) VALUES
 (1, 3, 3, 1, '2025-04-09 19:35:06'),
-(2, 3, 3, 1, '2025-04-09 20:30:20');
+(2, 3, 3, 1, '2025-04-09 20:30:20'),
+(3, 11, 2, 1, '2025-06-17 08:21:44');
 
 -- --------------------------------------------------------
 
@@ -159,6 +160,8 @@ INSERT INTO `publications` (`id`, `seller_id`, `product_id`, `name`, `descriptio
 CREATE TABLE `reports` (
   `id` int(11) NOT NULL,
   `publication_id` int(11) NOT NULL,
+  `Reason` varchar(90) NOT NULL,
+  `Comment` varchar(90) NOT NULL,
   `report_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -166,8 +169,12 @@ CREATE TABLE `reports` (
 -- Volcado de datos para la tabla `reports`
 --
 
-INSERT INTO `reports` (`id`, `publication_id`, `report_date`) VALUES
-(6, 13, '2025-05-29');
+INSERT INTO `reports` (`id`, `publication_id`, `Reason`, `Comment`, `report_date`) VALUES
+(6, 13, '', '', '2025-05-29'),
+(7, 2, 'Producto fraudulento', 'sasasdsa', '2025-06-25'),
+(8, 2, '', '', '2025-06-26'),
+(9, 2, '', '', '2025-06-26'),
+(10, 2, '', '', '2025-06-26');
 
 -- --------------------------------------------------------
 
@@ -276,7 +283,9 @@ INSERT INTO `users` (`id`, `username`, `password`, `mail`, `location`, `surname`
 (3, 'Pato2006', '$2y$10$kpHVytoMw4dO2x5F6aZAGO/dTfTv4t6UnfKtnZqEajkeX47rCZdf6', 'Pato2006@gmail.com', NULL, NULL, NULL, 2),
 (8, 'asd', '$2y$10$TQFRiWLXY0ZFKI.phMsdVOobdNO.XKgcO8KWljEqw6no.37NP4nyu', 'asd@gmail.com', 'asd', 'asd', 'sd', 1),
 (9, 'Pato', '$2y$10$PNzP5U2rgDOEwzDN7pi4Cu7lLhTloI96aIFMPztgBYdiMt1ak6Utu', 'asd@gmail.com', NULL, 'Zarate', 'Patricio', 2),
-(10, 'asdfg', '$2y$10$38BButN9xqfVpb6Z/MM8X.CSMbsunVnoyrlrTEjCH2tSDMAlppsbq', 'asdfg@gmail.com', NULL, 'asdfg', 'asdfg', 2);
+(10, 'asdfg', '$2y$10$38BButN9xqfVpb6Z/MM8X.CSMbsunVnoyrlrTEjCH2tSDMAlppsbq', 'asdfg@gmail.com', NULL, 'asdfg', 'asdfg', 2),
+(11, 'lol', '$2y$10$pNfIawdIE0.OcAr1.eVjQeQfVtg4HxW.4qigZQ.zA6HigW2qt4BWq', 'lol@gmail.com', NULL, 'lol', 'lol', 2),
+(12, 'sas', '$2y$10$XwU8UtXTMCgDwcwiArzm6.R8RiKebbqm03t0ztxuqV7.dxnPSoKhG', 'sas@gmail.com', NULL, 'sas', 'sas', 2);
 
 -- --------------------------------------------------------
 
@@ -394,7 +403,7 @@ ALTER TABLE `brands`
 -- AUTO_INCREMENT de la tabla `buys`
 --
 ALTER TABLE `buys`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `orientations`
@@ -418,7 +427,7 @@ ALTER TABLE `publications`
 -- AUTO_INCREMENT de la tabla `reports`
 --
 ALTER TABLE `reports`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -448,7 +457,7 @@ ALTER TABLE `types`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `wishlist`
