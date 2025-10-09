@@ -22,7 +22,6 @@ $(document).ready(function () {
   UltimoEstado = ""
   UltimaOrientacion = ""
 
-  renderButtons();
 
   $(document).on('click', '.boton.estado', function () {
     currentPage = 1;

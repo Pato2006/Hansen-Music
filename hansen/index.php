@@ -26,10 +26,11 @@ $isAdmin = isset($_SESSION['role_id']) && $_SESSION['role_id'] == 1;
     <link rel="stylesheet" href="css/cesese.css">
     <link rel="stylesheet" href="css/carrusel.css">
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/busqueda.js"></script>
     <script src="js/reportar.js"><script/>
     <script src="js/editarpubli.js"></script>
     <script src="js/script.js"></script>
-    <script src="js/busqueda.js"></script>
+    
     <script src="js/registro.js"></script>
     <script src="js/login.js"></script>
     <script src="js/perfil.js"></script>
@@ -46,6 +47,7 @@ $isAdmin = isset($_SESSION['role_id']) && $_SESSION['role_id'] == 1;
             script.src = 'js/godmode.js';
             document.head.appendChild(script);
         }
+        
     </script>
     <title>Hansen Music</title>
 </head>
@@ -78,8 +80,7 @@ $isAdmin = isset($_SESSION['role_id']) && $_SESSION['role_id'] == 1;
                 </svg>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form id="busca" class="d-flex pe-2 text-center ms-4" role="search" method="post"
-                    action="producto.html">
+                <form id="busca" class="d-flex pe-2 text-center ms-4" role="search" method="post">
                     <div class="row">
                         <div class="col-4 d-flex align-items-center flex-grow-1">
                             <input name="texto_buscar" id="buscador" class="form-control form-control-lg me-2"
