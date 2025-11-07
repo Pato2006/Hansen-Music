@@ -448,30 +448,111 @@ function reportes() {
         url: "PHP/ver_reportes.php",
         type: "POST",
         dataType: "json",
-        async: false,
         success: function (data) {
-            str = `
+            let str = `
                 <div class="reportes">
                     <h2 style="color:red;">Reportes</h2>
             `;
 
-            for (let i = 0; i < data.length; i++) {
-                str += `
-                    <div class="reporte">
-                        <h3 style= color:red;>ID: ${data[i].id}</h3>
-                        <p style= color:red;>Publication ID: ${data[i].publication_id}</p>
-                        <p style= color:red;><strong>Fecha:</strong> ${data[i].report_date}</p>
-                    </div>
-                `;
+            let total = data.length;
+            let processed = 0;
+
+            if (total === 0) {
+                $("#contenedor").html("<p>No hay reportes disponibles.</p>");
+                return;
             }
 
-            str += `</div>`;
+            // Recorremos los reportes
+            for (let i = 0; i < total; i++) {
+                let reporte = data[i];
 
-            // Por ejemplo, mostrarlo en un contenedor
+                $.ajax({
+                    url: "PHP/ver_cada_reporte.php",
+                    type: "POST",
+                    dataType: "json",
+                    data: { id: reporte.publication_id },
+                    success: function (pubData) {
+                        if (pubData.length > 0 && !pubData[0].error) {
+                            let pub = pubData[0];
+
+                            // 🔁 Tercer AJAX — obtener detalles completos + imágenes
+                            $.ajax({
+                                url: "PHP/clickeado.php",
+                                type: "POST",
+                                dataType: "json",
+                                data: { id: reporte.publication_id },
+                                success: function (detalleData) {
+                                    if (detalleData && !detalleData.error) {
+                                        let detalle = detalleData[0]; // primer registro
+                                        let imagenes = detalleData.imagenes || [];
+
+                                        // 🔹 Filtrar imágenes cuyo nombre coincida con el ID de la publicación
+                                        let imgHTML = "";
+                                        imagenes.forEach(img => {
+                                            const nombre = img.split(".")[0]; // parte antes del ".png"
+                                            if (nombre == detalle.id) {
+                                                imgHTML += `<img src="imagenes/publicacion/${img}" alt="${detalle.name}" width="100" style="margin:5px;">`;
+                                            }
+                                        });
+
+                                        str += `
+                                        <style>
+                                            .pepe {
+                                            font-size: 28px;
+                                            }
+                                        </style>
+                                            <div class="reporte" style="border:1px solid #ccc; margin:10px; padding:10px;"> 
+                                                <p class="pepe" style="color:white;">Publicación: ${detalle.name}</p>
+                                                <p class="pepe" style="color:white">Descripción: ${detalle.description}</p>
+                                                <p class="pepe" style="color:white">Precio:$${detalle.price}</p>
+                                                <p class="pepe" style="color:white">Estado: ${detalle.state}</p>
+                                                <p class="pepe" style="color:white">Tipo: ${detalle.type}</p>
+                                                <p class="pepe" style="color:white">Marca:${detalle.brand}</p>
+                                                <p class="pepe" style="color:white">Orientación: ${detalle.orientation}</p>
+                                                <p class="pepe" style="color:white">Forma de envío: ${detalle.sends}</p>
+                                                <p class="pepe" style="color:white">Vendedor: ${detalle.seller}</p>
+                                                <p class="pepe" style="color:white">Razón del reporte: ${reporte.Reason || 'Sin razón'}</p>
+                                                <p class="pepe" style="color:white">Comentario:</strong> ${reporte.Comment || 'Sin comentario'}</p>
+                                                <p class="pepe" style="color:white">Fecha del reporte: ${reporte.report_date}</p>
+                                                ${imgHTML ? `<div style="width:800px">Imágenes:<br>${imgHTML.replaceAll('width="100"', 'width="800"')}</div>` : `<p style="color:white"><em>Sin imágenes</em></p>`}
+                                            </div>
+                                        `;
+                                    } else {
+                                        str += `
+                                            <div class="reporte">
+                                                <h3 style="color:red;">Reporte ID: ${reporte.id}</h3>
+                                                <p>Error al cargar detalles de la publicación.</p>
+                                            </div>
+                                        `;
+                                    }
+                                },
+                                complete: function () {
+                                    processed++;
+                                    if (processed === total) {
+                                        str += `</div>`;
+                                        $("#contenedor").html(str);
+                                    }
+                                }
+                            });
+                        } else {
+                            str += `
+                                <div class="reporte">
+                                    <h3 style="color:red;">Reporte ID: ${reporte.id}</h3>
+                                    <p>Error al cargar publicación (ID ${reporte.publication_id})</p>
+                                </div>
+                            `;
+                            processed++;
+                            if (processed === total) {
+                                str += `</div>`;
+                                $("#contenedor").html(str);
+                            }
+                        }
+                    }
+                });
+            }
         },
-        error: function (jqXHR, textStatus, errorThrown) {
-            str = `<p>Error al cargar los reportes: ${textStatus}</p>`;
+        error: function (jqXHR, textStatus) {
+            $("#contenedor").html(`<p>Error al cargar los reportes: ${textStatus}</p>`);
         }
     });
-$("#contenedor").html(str);
 }
