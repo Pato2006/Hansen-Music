@@ -1,5 +1,50 @@
 $(document).ready(function () {
-    $("#navbar-zarpado").append('<button type="button" id="reportes" onclick="reportes()">reportes</button>');
+
+
+$(document).on("click", ".borrar-reporte", function() {
+    const id = $(this).data("id");
+    if (confirm("¿Seguro que querés borrar este reporte?")) {
+        $.ajax({
+            url: "PHP/borrar_reporte.php",
+            type: "POST",
+            data: { idreporte: id },
+            dataType: "json",
+            success: function(res) {
+                alert(res);
+                reportes();
+            },
+            error: function() {
+                alert("Error al borrar el reporte");
+            }
+        });
+    }
+});
+
+
+$(document).on("click", ".borrar-pub", function() {
+    const id = $(this).data("id");
+    if (confirm("¿Seguro que querés borrar esta publicación?")) {
+        $.ajax({
+            url: "PHP/borrar_publi.php",
+            type: "POST",
+            data: { idpubli: id },
+            dataType: "json",
+            success: function(res) {
+                alert(res);
+                const layoutType = ($("#buscador").css('display') === 'none') ? 'simplified' : 'full';
+                bus(marca_id, orientacion_id, estado, from, to, layoutType);
+            },
+            error: function() {
+                alert("Error al borrar la publicación");
+            }
+        });
+    }
+});
+$("#navbar-zarpado").append(`
+    <button type="button" id="reportes" class="btn btn-danger btn-lg fw-bold ms-3" onclick="reportes()">
+        Reportes
+    </button>
+`);
     // Initial AJAX call to check user roles
     $.ajax({
         url: "PHP/roles_id.php",
@@ -247,7 +292,7 @@ function bus(marca_id, orientacion_id, estado, from, to, layoutType) {
             for (let i = 0; i < data["publications"].length; i++) {
                 str += `
                     <div class="col-md-6 mb-4">
-                        <a href="#" class="articulos" onclick="clickeado(${data["publications"][i].id}); return false;">
+                        <a href="#" class="articulos" onclick="clickeado_godmode(${data["publications"][i].id}); return false;">
                             <div class="contenido tarjeta-blanca">
                                 <div class="foto">
                                     <img src="imagenes/publicacion/${data["publications"][i].id}.png" alt="instrumento">
@@ -259,6 +304,7 @@ function bus(marca_id, orientacion_id, estado, from, to, layoutType) {
                                     <p><strong>Estado:</strong> ${data["publications"][i].state}</p>
                                     <p><strong>Orientacion:</strong> ${data["publications"][i].orientation}</p>
                                     <p><strong>Modelo:</strong> ${data["publications"][i].product}</p>
+                                    <button type="button" class="btn btn-danger borrar-pub" data-id="${data["publications"][i].id}">Borrar publicación</button>
                                 </div>
                             </div>
                         </a>
@@ -419,6 +465,101 @@ function nextPage() {
     console.log("Current Page (nextPage):", currentPage);
 }
 
+function clickeado_godmode(id) {
+  $.ajax({
+    url: "PHP/roles_id.php",
+    type: "POST",
+    dataType: "json",
+    async: false,
+    success: function (data) {
+      $.ajax({
+        url: "php/clickeado.php",
+        type: "POST",
+        dataType: "json",
+        data: {
+          id: id,
+        },
+        async: false,
+        success: function (data) {
+          console.log(data[0])
+          str =
+            `
+      <main class="fondo-black">
+      <div class="container">
+          <div class="fondo-contenido d-flex align-items-start justify-content-center">
+              <section class="subir-producto">
+                  <div class="subir-imagen" id="subirImagenDiv">
+                    <img src="imagenes/svg/plus-lg.svg" class="d-block w-100" alt="Plus Icon" id="img1">
+                  </div>
+                  <div class="subir-titulo">
+                      <div class="mb-3 align-items-center">
+                          <section class="rounded">
+                              <h1>` + data[0].name + `</h1>
+                              <p>`+ data[0].seller + `</p>
+                              <img class="romeror" src="imagenes/perfil/`+ data[0].seller + `.png">
+                              <h2>$`+ data[0].price + `</h2>
+                              <p>Tipo de entrega: `+ data[0].sends + `</p>
+                              <p>Descripcion: `+ data[0].description + `</p>
+                              <p>Estado: `+ data[0].state + `</p>
+                              <p>Orientacion: `+ data[0].orientation + `</p>
+                              <p>Producto: `+ data[0].product + `</p>
+                              <p>Tipo de instrumento: `+ data[0].type + `</p>
+                              <p>Stock: `+ data[0].stock + `</p>
+                          </section>
+                      </div>
+                  </div>
+                  <div class="subir-descripcion ml-4">
+                      <div class="input-group input-group-lg  mb-3 align-items-center ">
+                          <section class="rounded">
+
+                          </section>
+                      </div>
+                  </div>
+                  <div class="subir-filtros mb-5 me-auto">
+                      <div class="subir-envio">
+              </section>
+          </div>
+          
+      </div>
+      
+  </main>`;
+
+          $("#contenedor").html(str);
+          for (i = 0; i < data.imagenes.length; i++) {
+            if (data[0].id + '.png' == data.imagenes[i]) {
+              var imageUrl = 'imagenes/publicacion/' + data.imagenes[i];
+              $("#img1").attr("src", imageUrl);
+            }
+          }
+
+
+          $("#comprar-prod").click(function () {
+            $.ajax({
+              url: "php/compra.php",
+              type: "POST",
+              dataType: "json",
+              data: data[0],
+              async: false,
+              success: function (data) {
+                if (data.message) {
+                  alert(data.message);
+                } else if (data.error) {
+                  alert("Error: " + data.error);
+                }
+              }
+            })
+          })
+        },
+        error: function (error) {
+          alert(error);
+        },
+      });
+    },
+    error: function () {
+    }
+  });
+}
+
 function previousPage() {
     if (currentPage > 1) {
         currentPage -= 1;
@@ -454,15 +595,18 @@ function reportes() {
                     <h2 style="color:red;">Reportes</h2>
             `;
 
-            let total = data.length;
-            let processed = 0;
-
-            if (total === 0) {
-                $("#contenedor").html("<p>No hay reportes disponibles.</p>");
+            if (!data || data.length === 0) {
+                $("#contenedor").html(`
+                    <div class="d-flex justify-content-center align-items-center" style="height:100vh;">
+                        <h1 class="text-white display-1 fw-bold text-center">NO HAY REPORTES</h1>
+                    </div>
+                `);
                 return;
             }
 
-            // Recorremos los reportes
+            let total = data.length;
+            let processed = 0;
+
             for (let i = 0; i < total; i++) {
                 let reporte = data[i];
 
@@ -475,7 +619,6 @@ function reportes() {
                         if (pubData.length > 0 && !pubData[0].error) {
                             let pub = pubData[0];
 
-                            // 🔁 Tercer AJAX — obtener detalles completos + imágenes
                             $.ajax({
                                 url: "PHP/clickeado.php",
                                 type: "POST",
@@ -483,24 +626,21 @@ function reportes() {
                                 data: { id: reporte.publication_id },
                                 success: function (detalleData) {
                                     if (detalleData && !detalleData.error) {
-                                        let detalle = detalleData[0]; // primer registro
+                                        let detalle = detalleData[0];
                                         let imagenes = detalleData.imagenes || [];
-
-                                        // 🔹 Filtrar imágenes cuyo nombre coincida con el ID de la publicación
                                         let imgHTML = "";
+
                                         imagenes.forEach(img => {
-                                            const nombre = img.split(".")[0]; // parte antes del ".png"
+                                            const nombre = img.split(".")[0];
                                             if (nombre == detalle.id) {
                                                 imgHTML += `<img src="imagenes/publicacion/${img}" alt="${detalle.name}" width="100" style="margin:5px;">`;
                                             }
                                         });
 
                                         str += `
-                                        <style>
-                                            .pepe {
-                                            font-size: 28px;
-                                            }
-                                        </style>
+                                            <style>
+                                                .pepe { font-size: 28px; }
+                                            </style>
                                             <div class="reporte" style="border:1px solid #ccc; margin:10px; padding:10px;"> 
                                                 <p class="pepe" style="color:white;">Publicación: ${detalle.name}</p>
                                                 <p class="pepe" style="color:white">Descripción: ${detalle.description}</p>
@@ -512,9 +652,10 @@ function reportes() {
                                                 <p class="pepe" style="color:white">Forma de envío: ${detalle.sends}</p>
                                                 <p class="pepe" style="color:white">Vendedor: ${detalle.seller}</p>
                                                 <p class="pepe" style="color:white">Razón del reporte: ${reporte.Reason || 'Sin razón'}</p>
-                                                <p class="pepe" style="color:white">Comentario:</strong> ${reporte.Comment || 'Sin comentario'}</p>
+                                                <p class="pepe" style="color:white">Comentario: ${reporte.Comment || 'Sin comentario'}</p>
                                                 <p class="pepe" style="color:white">Fecha del reporte: ${reporte.report_date}</p>
                                                 ${imgHTML ? `<div style="width:800px">Imágenes:<br>${imgHTML.replaceAll('width="100"', 'width="800"')}</div>` : `<p style="color:white"><em>Sin imágenes</em></p>`}
+                                                <button class="borrar-reporte" data-id="${reporte.id}" style="background:red;color:white;padding:8px 12px;border:none;border-radius:5px;cursor:pointer;">Borrar reporte</button>
                                             </div>
                                         `;
                                     } else {
@@ -555,4 +696,8 @@ function reportes() {
             $("#contenedor").html(`<p>Error al cargar los reportes: ${textStatus}</p>`);
         }
     });
+
+
+
+
 }
